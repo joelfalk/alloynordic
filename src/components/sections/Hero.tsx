@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import ferraLogo from "@/assets/ferra-logo.png";
 
 const Hero = () => {
   return (
@@ -16,15 +15,6 @@ const Hero = () => {
 
       <div className="container relative z-10 text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Logo */}
-          <div className="flex justify-center mb-6">
-            <img 
-              src={ferraLogo} 
-              alt="Ferra AB Logo" 
-              className="h-32 md:h-40 lg:h-48 w-auto object-contain"
-            />
-          </div>
-
           {/* Company Name */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight">
             FERRA
