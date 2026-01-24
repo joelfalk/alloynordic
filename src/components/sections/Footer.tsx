@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Company Info */}
             <div>
-              <h3 className="text-2xl font-bold mb-2">FERRA AB</h3>
+              <h3 className="text-2xl font-bold mb-2">ALLOY NORDIC</h3>
               <p className="text-primary-foreground/70">
                 Kvalitet utan kompromiss
               </p>
@@ -37,7 +37,7 @@ const Footer = () => {
             <div>
               <h4 className="font-semibold mb-4">Kontakt</h4>
               <div className="space-y-2 text-primary-foreground/70">
-                <p>info@ferra.se</p>
+                <p>info@alloynordic.se</p>
                 <p>+46 8 123 45 67</p>
                 <p>Stockholm, Sverige</p>
               </div>
@@ -47,7 +47,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-primary-foreground/20 pt-8 text-center">
             <p className="text-primary-foreground/60">
-              © {currentYear} Ferra AB. Alla rättigheter förbehållna.
+              © {currentYear} Alloy Nordic. Alla rättigheter förbehållna.
             </p>
           </div>
         </div>
