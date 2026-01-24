@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Varför Välja Ferrinox?
+              Varför Välja Alloy Nordic?
             </h2>
             <div className="w-24 h-1 bg-accent mx-auto mb-6" />
             <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">

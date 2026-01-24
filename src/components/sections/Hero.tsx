@@ -17,8 +17,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Company Name */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight">
-            FERRA
-            <span className="block text-2xl md:text-3xl lg:text-4xl font-light mt-2 tracking-widest">AB</span>
+            ALLOY NORDIC
           </h1>
 
           {/* Tagline */}

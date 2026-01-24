@@ -7,7 +7,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Om Ferra AB</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Om Alloy Nordic</h2>
             <div className="w-24 h-1 bg-accent mx-auto" />
           </div>
 
@@ -15,7 +15,7 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Ferra AB är din pålitliga partner för högkvalitativa metalldelar från Asien. Med år av erfarenhet och
+                Alloy Nordic är din pålitliga partner för högkvalitativa metalldelar från Asien. Med år av erfarenhet och
                 ett omfattande nätverk av noggrant utvalda leverantörer i Kina, erbjuder vi skräddarsydda lösningar för
                 svenska företag.
               </p>
@@ -25,7 +25,7 @@ const About = () => {
                 sourca metalldelar från Kina med samma höga kvalitetskrav som du ställer på inhemsk produktion.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Med Ferra som din partner får du en svensk kontaktperson som talar ditt språk och förstår dina behov,
+                Med Alloy Nordic som din partner får du en svensk kontaktperson som talar ditt språk och förstår dina behov,
                 samtidigt som du drar nytta av konkurrenskraftiga priser och tillförlitlig kvalitet.
               </p>
             </div>
