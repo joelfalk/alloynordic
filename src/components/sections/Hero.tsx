@@ -18,7 +18,7 @@ const Hero = () => {
           {/* Company Name */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight flex items-center justify-center gap-0">
             <span>ALL</span>
-            <img src="/alloy-o-icon.png" className="h-[0.85em] w-auto inline-block brightness-0 invert" />
+            <img src="/assets/alloy-o-icon.png" className="h-[0.85em] w-auto inline-block brightness-0 invert" />
             <span>Y NORDIC</span>
           </h1>
 
