@@ -23,11 +23,12 @@ const Hero = () => {
               <img src={alloyIcon} alt="O" className="h-[0.90em] w-auto inline-block brightness-0 invert" />
               <span>Y</span>
             </h1>
-            <div className="flex flex-col text-base md:text-xl lg:text-2xl font-bold text-primary-foreground tracking-widest ml-2 mt-[0.1em]">
-              {'NORDIC'.split('').map((letter, index) => (
-                <span key={index} className="leading-[0.85]">{letter}</span>
-              ))}
-            </div>
+            <span 
+              className="text-base md:text-xl lg:text-2xl font-bold text-primary-foreground tracking-widest origin-top-left rotate-90 ml-4"
+              style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+            >
+              NORDIC
+            </span>
           </div>
 
           {/* Tagline */}
