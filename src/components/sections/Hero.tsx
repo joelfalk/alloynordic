@@ -16,8 +16,14 @@ const Hero = () => {
       <div className="container relative z-10 text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Company Name */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight">
-            ALLOY NORDIC
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight flex items-center justify-center gap-0">
+            <span>ALL</span>
+            <img 
+              src="/alloy-o-icon.png" 
+              alt="O" 
+              className="h-[0.85em] w-auto inline-block brightness-0 invert"
+            />
+            <span>Y NORDIC</span>
           </h1>
 
           {/* Tagline */}
