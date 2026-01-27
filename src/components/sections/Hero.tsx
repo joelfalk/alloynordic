@@ -17,11 +17,18 @@ const Hero = () => {
       <div className="container relative z-10 text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Company Name */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight flex items-center justify-center gap-0">
-            <span>ALL</span>
-            <img src={alloyIcon} alt="O" className="h-[0.90em] w-auto inline-block brightness-0 invert" />
-            <span>Y NORDIC</span>
-          </h1>
+          <div className="relative flex items-start justify-center">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-primary-foreground tracking-tight flex items-center gap-0">
+              <span>ALL</span>
+              <img src={alloyIcon} alt="O" className="h-[0.90em] w-auto inline-block brightness-0 invert" />
+              <span>Y</span>
+            </h1>
+            <div className="flex flex-col text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground tracking-widest ml-2 mt-[0.15em]">
+              {'NORDIC'.split('').map((letter, index) => (
+                <span key={index} className="leading-tight">{letter}</span>
+              ))}
+            </div>
+          </div>
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl lg:text-3xl text-primary-foreground/90 font-light tracking-wide">
