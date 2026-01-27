@@ -30,7 +30,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto">
-            Din partner för metalldelar från Asien
+            Din partner för metalldelar från Asien sen 1989
           </p>
 
           {/* CTA Buttons */}
