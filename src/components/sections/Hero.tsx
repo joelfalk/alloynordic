@@ -17,19 +17,11 @@ const Hero = () => {
       <div className="container relative z-10 text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Company Name */}
-          <div className="relative flex items-start justify-center">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-primary-foreground tracking-tight flex items-center gap-0">
-              <span>ALL</span>
-              <img src={alloyIcon} alt="O" className="h-[0.90em] w-auto inline-block brightness-0 invert" />
-              <span>Y</span>
-            </h1>
-            <span 
-              className="text-base md:text-xl lg:text-2xl font-bold text-primary-foreground tracking-widest origin-top-left rotate-90 ml-4"
-              style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-            >
-              NORDIC
-            </span>
-          </div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight flex items-center justify-center gap-0">
+            <span>ALL</span>
+            <img src={alloyIcon} alt="O" className="h-[0.90em] w-auto inline-block brightness-0 invert" />
+            <span>Y NORDIC</span>
+          </h1>
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl lg:text-3xl text-primary-foreground/90 font-light tracking-wide">
