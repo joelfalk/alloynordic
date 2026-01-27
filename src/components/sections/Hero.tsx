@@ -16,30 +16,12 @@ const Hero = () => {
 
       <div className="container relative z-10 text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Company Name - Crossword Layout */}
-          <div className="relative text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight inline-block">
-            {/* Vertical: N (above the O) */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center leading-none" style={{ bottom: '100%' }}>
-              <span>N</span>
-            </div>
-            
-            {/* Horizontal: ALLOY */}
-            <div className="flex items-center justify-center leading-none">
-              <span>A</span>
-              <span>L</span>
-              <span>L</span>
-              <img src={alloyIcon} alt="O" className="h-[1em] w-auto brightness-0 invert" />
-              <span>Y</span>
-            </div>
-            
-            {/* Vertical: RDIC (below the O) */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center leading-none" style={{ top: '100%' }}>
-              <span>R</span>
-              <span>D</span>
-              <span>I</span>
-              <span>C</span>
-            </div>
-          </div>
+          {/* Company Name */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground tracking-tight flex items-center justify-center gap-0">
+            <span>ALL</span>
+            <img src={alloyIcon} alt="O" className="h-[0.90em] w-auto inline-block brightness-0 invert" />
+            <span>Y NORDIC</span>
+          </h1>
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl lg:text-3xl text-primary-foreground/90 font-light tracking-wide">
