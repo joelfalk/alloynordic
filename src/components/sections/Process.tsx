@@ -1,29 +1,32 @@
 import { ArrowRight } from "lucide-react";
-
-const steps = [
-  {
-    number: "01",
-    title: "Konsultation",
-    description: "Vi diskuterar dina behov, specifikationer och krav på metalldelar",
-  },
-  {
-    number: "02",
-    title: "Leverantörsmatchning",
-    description: "Vi identifierar och utvärderar lämpliga leverantörer i vårt nätverk",
-  },
-  {
-    number: "03",
-    title: "Kvalitetskontroll",
-    description: "Noggrann inspektion och testning innan leverans",
-  },
-  {
-    number: "04",
-    title: "Leverans",
-    description: "Säker transport och leverans direkt till din dörr i Sverige",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Process = () => {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      number: "01",
+      titleKey: "process.step1.title",
+      descKey: "process.step1.desc",
+    },
+    {
+      number: "02",
+      titleKey: "process.step2.title",
+      descKey: "process.step2.desc",
+    },
+    {
+      number: "03",
+      titleKey: "process.step3.title",
+      descKey: "process.step3.desc",
+    },
+    {
+      number: "04",
+      titleKey: "process.step4.title",
+      descKey: "process.step4.desc",
+    },
+  ];
+
   return (
     <section id="process" className="py-24 bg-background">
       <div className="container px-4">
@@ -31,11 +34,11 @@ const Process = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Vår Process
+              {t("process.title")}
             </h2>
             <div className="w-24 h-1 bg-accent mx-auto mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              En strukturerad process som säkerställer kvalitet i varje steg
+              {t("process.subtitle")}
             </p>
           </div>
           
@@ -48,10 +51,10 @@ const Process = () => {
                     {step.number}
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {step.title}
+                    {t(step.titleKey)}
                   </h3>
                   <p className="text-muted-foreground">
-                    {step.description}
+                    {t(step.descKey)}
                   </p>
                 </div>
                 

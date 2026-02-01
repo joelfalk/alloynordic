@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import alloyIcon from "@/assets/alloy-o-icon.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary to-primary/90 overflow-hidden">
       {/* Background pattern */}
@@ -25,12 +28,12 @@ const Hero = () => {
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl lg:text-3xl text-primary-foreground/90 font-light tracking-wide">
-            Kvalitet utan kompromiss
+            {t("hero.tagline")}
           </p>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto">
-            Din partner för metalldelar från Asien sen 1989
+            {t("hero.subtitle")}
           </p>
 
           {/* CTA Buttons */}
@@ -40,7 +43,7 @@ const Hero = () => {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6 font-semibold"
             >
-              <a href="#kontakt">Kontakta oss</a>
+              <a href="#kontakt">{t("hero.cta.contact")}</a>
             </Button>
             <Button
               asChild
@@ -48,7 +51,7 @@ const Hero = () => {
               size="lg"
               className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8 py-6 font-semibold bg-transparent"
             >
-              <a href="#om-oss">Om oss</a>
+              <a href="#om-oss">{t("hero.cta.about")}</a>
             </Button>
           </div>
         </div>

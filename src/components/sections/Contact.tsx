@@ -5,9 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     namn: "",
@@ -30,8 +32,8 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
     toast({
-      title: "Tack för din förfrågan!",
-      description: "Vi återkommer till dig inom 24 timmar.",
+      title: t("contact.toast.title"),
+      description: t("contact.toast.desc"),
     });
     
     setFormData({
@@ -51,11 +53,11 @@ const Contact = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Kontakta Oss
+              {t("contact.title")}
             </h2>
             <div className="w-24 h-1 bg-accent mx-auto mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Berätta om ditt projekt så återkommer vi med en skräddarsydd lösning
+              {t("contact.subtitle")}
             </p>
           </div>
           
@@ -65,18 +67,18 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="namn">Namn *</Label>
+                    <Label htmlFor="namn">{t("contact.form.name")} *</Label>
                     <Input
                       id="namn"
                       name="namn"
                       value={formData.namn}
                       onChange={handleChange}
                       required
-                      placeholder="Ditt namn"
+                      placeholder={t("contact.form.namePlaceholder")}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">E-post *</Label>
+                    <Label htmlFor="email">{t("contact.form.email")} *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -84,44 +86,44 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="din@email.se"
+                      placeholder={t("contact.form.emailPlaceholder")}
                     />
                   </div>
                 </div>
                 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="telefon">Telefonnummer</Label>
+                    <Label htmlFor="telefon">{t("contact.form.phone")}</Label>
                     <Input
                       id="telefon"
                       name="telefon"
                       type="tel"
                       value={formData.telefon}
                       onChange={handleChange}
-                      placeholder="+46 70 123 45 67"
+                      placeholder={t("contact.form.phonePlaceholder")}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="foretag">Företagsnamn</Label>
+                    <Label htmlFor="foretag">{t("contact.form.company")}</Label>
                     <Input
                       id="foretag"
                       name="foretag"
                       value={formData.foretag}
                       onChange={handleChange}
-                      placeholder="Ditt företag AB"
+                      placeholder={t("contact.form.companyPlaceholder")}
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="meddelande">Meddelande *</Label>
+                  <Label htmlFor="meddelande">{t("contact.form.message")} *</Label>
                   <Textarea
                     id="meddelande"
                     name="meddelande"
                     value={formData.meddelande}
                     onChange={handleChange}
                     required
-                    placeholder="Beskriv vad du letar efter..."
+                    placeholder={t("contact.form.messagePlaceholder")}
                     rows={5}
                   />
                 </div>
@@ -132,7 +134,7 @@ const Contact = () => {
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Skickar..." : "Skicka förfrågan"}
+                  {isSubmitting ? t("contact.form.submitting") : t("contact.form.submit")}
                 </Button>
               </form>
             </div>
@@ -141,11 +143,10 @@ const Contact = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-semibold text-foreground mb-6">
-                  Låt oss prata
+                  {t("contact.talk")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-8">
-                  Har du frågor om våra tjänster eller vill diskutera ditt nästa projekt? 
-                  Fyll i formuläret eller kontakta oss direkt – vi återkommer alltid inom 24 timmar på vardagar.
+                  {t("contact.info")}
                 </p>
               </div>
               
@@ -155,7 +156,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">E-post</h4>
+                    <h4 className="font-semibold text-foreground">{t("contact.email")}</h4>
                     <p className="text-muted-foreground">info@ferrinox.se</p>
                   </div>
                 </div>
@@ -165,7 +166,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Telefon</h4>
+                    <h4 className="font-semibold text-foreground">{t("contact.phone")}</h4>
                     <p className="text-muted-foreground">+46 8 123 45 67</p>
                   </div>
                 </div>
@@ -175,7 +176,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Adress</h4>
+                    <h4 className="font-semibold text-foreground">{t("contact.address")}</h4>
                     <p className="text-muted-foreground">Stockholm, Sverige</p>
                   </div>
                 </div>
