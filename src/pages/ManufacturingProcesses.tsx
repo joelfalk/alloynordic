@@ -131,7 +131,7 @@ const ManufacturingProcesses = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-primary">
       <LanguageSwitcher />
 
       {/* Fixed Back Button */}
@@ -188,18 +188,20 @@ const ManufacturingProcesses = () => {
         </motion.div>
       </section>
 
-      {/* Process Sections */}
-      {processes.map((process, index) => (
-        <ProcessSection
-          key={process.id}
-          image={process.image}
-          titleKey={process.titleKey}
-          descKey={process.descKey}
-          detailsKey={process.detailsKey}
-          index={index}
-          t={t}
-        />
-      ))}
+      {/* Process Sections - no gaps */}
+      <div className="relative">
+        {processes.map((process, index) => (
+          <ProcessSection
+            key={process.id}
+            image={process.image}
+            titleKey={process.titleKey}
+            descKey={process.descKey}
+            detailsKey={process.detailsKey}
+            index={index}
+            t={t}
+          />
+        ))}
+      </div>
 
       {/* CTA Section */}
       <section className="relative py-24 px-4 bg-gradient-to-br from-primary via-primary to-primary/90">
