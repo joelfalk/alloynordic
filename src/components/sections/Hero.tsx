@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import alloyIcon from "@/assets/alloy-o-icon.png";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-options/raw-materials.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
@@ -16,7 +16,7 @@ const Hero = () => {
       />
       
       {/* Dark overlay with orange tint */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/70" />
 
       <div className="container relative z-10 text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8">

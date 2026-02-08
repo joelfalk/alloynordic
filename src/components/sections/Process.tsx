@@ -60,7 +60,7 @@ const Process = () => {
                   <div className="text-5xl font-bold text-accent/30 mb-4">
                     {step.number}
                   </div>
-                  <step.Icon className="w-10 h-10 text-accent mb-4" />
+                  <step.Icon className="w-10 h-10 text-primary mb-4" />
                   <h3 className="text-xl font-semibold text-foreground mb-3">
                     {t(step.titleKey)}
                   </h3>
