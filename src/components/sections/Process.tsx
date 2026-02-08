@@ -57,10 +57,12 @@ const Process = () => {
             {steps.map((step, index) => (
               <div key={index} className="relative">
                 <div className="bg-card border rounded-lg p-6 h-full hover:shadow-lg transition-shadow duration-300">
-                  <div className="text-5xl font-bold text-primary/20 mb-4">
-                    {step.number}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-5xl font-bold text-primary/20">
+                      {step.number}
+                    </div>
+                    <step.Icon className="w-10 h-10 text-primary" />
                   </div>
-                  <step.Icon className="w-10 h-10 text-primary mb-4" />
                   <h3 className="text-xl font-semibold text-foreground mb-3">
                     {t(step.titleKey)}
                   </h3>
