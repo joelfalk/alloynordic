@@ -60,8 +60,10 @@ const Process = () => {
                 
                 {/* Arrow between steps (hidden on last item and mobile) */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:flex absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                    <ArrowRight className="w-6 h-6 text-primary/20" />
+                  <div className="hidden md:flex absolute top-1/2 -right-5 transform -translate-y-1/2 z-10">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <ArrowRight className="w-5 h-5 text-primary" />
+                    </div>
                   </div>
                 )}
               </div>
