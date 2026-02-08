@@ -1,29 +1,39 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageSquare, Search, ShieldCheck, Truck } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { LucideIcon } from "lucide-react";
 
 const Process = () => {
   const { t } = useLanguage();
 
-  const steps = [
+  const steps: {
+    number: string;
+    titleKey: string;
+    descKey: string;
+    Icon: LucideIcon;
+  }[] = [
     {
       number: "01",
       titleKey: "process.step1.title",
       descKey: "process.step1.desc",
+      Icon: MessageSquare,
     },
     {
       number: "02",
       titleKey: "process.step2.title",
       descKey: "process.step2.desc",
+      Icon: Search,
     },
     {
       number: "03",
       titleKey: "process.step3.title",
       descKey: "process.step3.desc",
+      Icon: ShieldCheck,
     },
     {
       number: "04",
       titleKey: "process.step4.title",
       descKey: "process.step4.desc",
+      Icon: Truck,
     },
   ];
 
@@ -50,6 +60,7 @@ const Process = () => {
                   <div className="text-5xl font-bold text-accent/30 mb-4">
                     {step.number}
                   </div>
+                  <step.Icon className="w-10 h-10 text-accent mb-4" />
                   <h3 className="text-xl font-semibold text-foreground mb-3">
                     {t(step.titleKey)}
                   </h3>
