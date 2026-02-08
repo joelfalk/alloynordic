@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 const Contact = () => {
   const {
     toast
@@ -35,20 +36,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast({
-      title: t("contact.toast.title"),
-      description: t("contact.toast.desc")
-    });
-    setFormData({
-      namn: "",
-      email: "",
-      telefon: "",
-      foretag: "",
-      meddelande: ""
-    });
-    setIsSubmitting(false);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+
+      if (error) {
+        console.error("Error sending email:", error);
+        toast({
+          title: t("contact.toast.errorTitle") || "Fel",
+          description: t("contact.toast.errorDesc") || "Kunde inte skicka meddelandet. Försök igen.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      console.log("Email sent successfully:", data);
+      toast({
+        title: t("contact.toast.title"),
+        description: t("contact.toast.desc"),
+      });
+      setFormData({
+        namn: "",
+        email: "",
+        telefon: "",
+        foretag: "",
+        meddelande: "",
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      toast({
+        title: t("contact.toast.errorTitle") || "Fel",
+        description: t("contact.toast.errorDesc") || "Kunde inte skicka meddelandet. Försök igen.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return <section id="kontakt" className="py-24 bg-muted/50">
       <div className="container px-4">
