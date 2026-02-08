@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -30,6 +31,9 @@ const Footer = () => {
                 <a href="#process" className="block text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   {t("footer.process")}
                 </a>
+                <Link to="/tillverkningsprocesser" className="block text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                  {t("footer.manufacturing")}
+                </Link>
                 <a href="#kontakt" className="block text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   {t("footer.contactLink")}
                 </a>

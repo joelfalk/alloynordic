@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import alloyIcon from "@/assets/alloy-o-icon.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -52,6 +53,14 @@ const Hero = () => {
               className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8 py-6 font-semibold bg-transparent"
             >
               <a href="#om-oss">{t("hero.cta.about")}</a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8 py-6 font-semibold bg-transparent"
+            >
+              <Link to="/tillverkningsprocesser">{t("hero.cta.manufacturing")}</Link>
             </Button>
           </div>
         </div>
