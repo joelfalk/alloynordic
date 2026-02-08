@@ -15,6 +15,7 @@ const translations = {
     "hero.subtitle": "Din partner för metalldelar från Asien sen 1989",
     "hero.cta.contact": "Kontakta oss",
     "hero.cta.about": "Om oss",
+    "hero.cta.manufacturing": "Tillverkningsprocesser",
     
     // About
     "about.title": "Om Alloy Nordic",
@@ -95,7 +96,34 @@ const translations = {
     "footer.services": "Tjänster",
     "footer.process": "Vår process",
     "footer.contactLink": "Kontakt",
+    "footer.manufacturing": "Tillverkningsprocesser",
     "footer.rights": "Alla rättigheter förbehållna.",
+    
+    // Manufacturing Processes Page
+    "manufacturing.title": "Tillverkningsprocesser",
+    "manufacturing.subtitle": "Vi erbjuder ett brett utbud av tillverkningsmetoder för att möta dina specifika behov",
+    "manufacturing.back": "Tillbaka till startsidan",
+    
+    "manufacturing.machining.title": "Skärande bearbetning",
+    "manufacturing.machining.desc": "Högprecisionsbearbetning för komplexa metalldelar",
+    "manufacturing.machining.details": "Skärande bearbetning omfattar CNC-fräsning, svarvning, borrning och slipning. Denna metod ger extremt hög precision och utmärkt ytfinish. Perfekt för prototyper, små till medelstora serier och komponenter med snäva toleranser. Vi samarbetar med leverantörer som använder moderna 5-axliga CNC-maskiner för att producera komplexa geometrier med högsta noggrannhet.",
+    
+    "manufacturing.casting.title": "Gjutning",
+    "manufacturing.casting.desc": "Sandgjutning, precisionsgjutning och pressgjutning för alla behov",
+    "manufacturing.casting.details": "Gjutning är en kostnadseffektiv metod för att producera metalldelar i stora volymer. Vi erbjuder sandgjutning för större detaljer, precisionsgjutning (investment casting) för komplexa former med fin ytfinish, samt pressgjutning för högvolymsproduktion av aluminium- och zinkdetaljer. Varje metod väljs baserat på dina specifika krav på material, geometri och volym.",
+    
+    "manufacturing.sintering.title": "Sintrade detaljer & MIM",
+    "manufacturing.sintering.desc": "Metallformsprutning och pulvermetallurgi för komplexa smådetaljer",
+    "manufacturing.sintering.details": "Metal Injection Molding (MIM) och sintring kombinerar fördelarna med plastformsprutning och pulvermetallurgi. Perfekt för små, komplexa detaljer i stora volymer. Processen ger utmärkt dimensionsstabilitet och möjliggör produktion av geometrier som är omöjliga att uppnå med traditionell bearbetning. Idealiskt för komponenter inom medicinteknik, elektronik och fordonsindustrin.",
+    
+    "manufacturing.hotpressing.title": "Varmpressning",
+    "manufacturing.hotpressing.desc": "Formning av metall under hög temperatur och tryck",
+    "manufacturing.hotpressing.details": "Varmpressning är en kraftfull process där metall formas under hög temperatur och tryck. Denna metod ger komponenter med utmärkt mekanisk styrka och densitet. Särskilt lämplig för tillverkning av strukturella komponenter, verktyg och delar som kräver hög hållfasthet. Vi kan hantera en mängd olika legeringar och materialspecifikationer.",
+    
+    "manufacturing.cta.title": "Har du ett projekt i åtanke?",
+    "manufacturing.cta.desc": "Kontakta oss för en kostnadsfri konsultation och offert för ditt tillverkningsprojekt.",
+    "manufacturing.cta.contact": "Kontakta oss",
+    "manufacturing.cta.home": "Tillbaka till startsidan",
   },
   en: {
     // Hero
@@ -103,6 +131,7 @@ const translations = {
     "hero.subtitle": "Your partner for metal parts from Asia since 1989",
     "hero.cta.contact": "Contact us",
     "hero.cta.about": "About us",
+    "hero.cta.manufacturing": "Manufacturing Processes",
     
     // About
     "about.title": "About Alloy Nordic",
@@ -183,7 +212,34 @@ const translations = {
     "footer.services": "Services",
     "footer.process": "Our process",
     "footer.contactLink": "Contact",
+    "footer.manufacturing": "Manufacturing Processes",
     "footer.rights": "All rights reserved.",
+    
+    // Manufacturing Processes Page
+    "manufacturing.title": "Manufacturing Processes",
+    "manufacturing.subtitle": "We offer a wide range of manufacturing methods to meet your specific needs",
+    "manufacturing.back": "Back to homepage",
+    
+    "manufacturing.machining.title": "Machining",
+    "manufacturing.machining.desc": "High-precision machining for complex metal parts",
+    "manufacturing.machining.details": "Machining includes CNC milling, turning, drilling, and grinding. This method provides extremely high precision and excellent surface finish. Perfect for prototypes, small to medium series, and components with tight tolerances. We work with suppliers using modern 5-axis CNC machines to produce complex geometries with the highest accuracy.",
+    
+    "manufacturing.casting.title": "Casting",
+    "manufacturing.casting.desc": "Sand casting, investment casting, and die casting for all needs",
+    "manufacturing.casting.details": "Casting is a cost-effective method for producing metal parts in large volumes. We offer sand casting for larger parts, investment casting for complex shapes with fine surface finish, and die casting for high-volume production of aluminum and zinc parts. Each method is selected based on your specific requirements for material, geometry, and volume.",
+    
+    "manufacturing.sintering.title": "Sintered Parts & MIM",
+    "manufacturing.sintering.desc": "Metal injection molding and powder metallurgy for complex small parts",
+    "manufacturing.sintering.details": "Metal Injection Molding (MIM) and sintering combine the advantages of plastic injection molding and powder metallurgy. Perfect for small, complex parts in large volumes. The process provides excellent dimensional stability and enables production of geometries impossible to achieve with traditional machining. Ideal for components in medical technology, electronics, and automotive industries.",
+    
+    "manufacturing.hotpressing.title": "Hot Pressing",
+    "manufacturing.hotpressing.desc": "Metal forming under high temperature and pressure",
+    "manufacturing.hotpressing.details": "Hot pressing is a powerful process where metal is formed under high temperature and pressure. This method produces components with excellent mechanical strength and density. Particularly suitable for manufacturing structural components, tools, and parts requiring high strength. We can handle a variety of alloys and material specifications.",
+    
+    "manufacturing.cta.title": "Have a project in mind?",
+    "manufacturing.cta.desc": "Contact us for a free consultation and quote for your manufacturing project.",
+    "manufacturing.cta.contact": "Contact us",
+    "manufacturing.cta.home": "Back to homepage",
   },
 };
 
