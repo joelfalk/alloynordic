@@ -16,8 +16,13 @@ const translations = {
     "hero.cta.contact": "Kontakta oss",
     "hero.cta.about": "Om oss",
     "hero.cta.manufacturing": "Tillverkningsprocesser",
+    "hero.stat.years": "År i branschen",
+    "hero.stat.countries": "Länder",
+    "hero.stat.response": "Svarstid",
+    "hero.stat.qc": "Kvalitetskontroll",
 
     // About
+    "about.kicker": "Om oss",
     "about.title": "Om Alloy Nordic",
     "about.p1":
       "Alloy Nordic är din pålitliga partner för högkvalitativa metalldelar från Asien. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer i Kina, erbjuder vi skräddarsydda lösningar för svenska företag.",
@@ -33,6 +38,7 @@ const translations = {
     "about.expertise.desc": "Djup kunskap inom metalldelar och tillverkningsprocesser",
 
     // Services
+    "services.kicker": "Tjänster",
     "services.title": "Våra Tjänster",
     "services.subtitle": "Från första kontakt till leverans – vi är med dig hela vägen",
     "services.sourcing.title": "Sourcing & Leverantörsmatchning",
@@ -49,6 +55,7 @@ const translations = {
       "Behöver du skräddarsydda metalldelar? Vi koordinerar produktion av kundanpassade komponenter enligt dina ritningar och specifikationer.",
 
     // Process
+    "process.kicker": "Process",
     "process.title": "Vår Process",
     "process.subtitle": "En strukturerad process som säkerställer kvalitet i varje steg",
     "process.step1.title": "Konsultation",
@@ -61,6 +68,7 @@ const translations = {
     "process.step4.desc": "Säker transport och leverans direkt till din dörr i Sverige",
 
     // Why Choose Us
+    "why.kicker": "Varför Alloy Nordic",
     "why.title": "Varför Välja Alloy Nordic?",
     "why.subtitle": "Vi gör internationell handel enkelt och tryggt för svenska företag",
     "why.quality.title": "Kvalitetsgaranti",
@@ -73,6 +81,7 @@ const translations = {
     "why.response.desc": "Vi återkommer alltid inom 24 timmar på vardagar",
 
     // Contact
+    "contact.kicker": "Kontakt",
     "contact.title": "Kontakta Oss",
     "contact.subtitle": "Berätta om ditt projekt så återkommer vi med en skräddarsydd lösning",
     "contact.talk": "Låt oss prata",
@@ -95,6 +104,19 @@ const translations = {
     "contact.email": "E-post",
     "contact.phone": "Telefon",
     "contact.address": "Adress",
+
+    // Materials
+    "materials.kicker": "Material",
+    "materials.title": "Material vi arbetar med",
+    "materials.subtitle": "Vi sourcar ett brett spektrum av legeringar och metaller — från standard till specialiserade kvaliteter.",
+    "materials.ss304": "Rostfritt stål",
+    "materials.ss316": "Marint rostfritt",
+    "materials.al6061": "Aluminium",
+    "materials.al7075": "Höghållfast aluminium",
+    "materials.ti": "Titan",
+    "materials.brass": "Mässing",
+    "materials.copper": "Koppar",
+    "materials.tool": "Verktygsstål",
 
     // Footer
     "footer.tagline": "Kvalitet utan kompromiss",
@@ -144,8 +166,13 @@ const translations = {
     "hero.cta.contact": "Contact us",
     "hero.cta.about": "About us",
     "hero.cta.manufacturing": "Manufacturing Processes",
+    "hero.stat.years": "Years in business",
+    "hero.stat.countries": "Countries",
+    "hero.stat.response": "Response time",
+    "hero.stat.qc": "Quality control",
 
     // About
+    "about.kicker": "About",
     "about.title": "About Alloy Nordic",
     "about.p1":
       "Alloy Nordic is your reliable partner for high-quality metal parts from Asia. With years of experience and an extensive network of carefully selected suppliers in China, we offer tailored solutions for Swedish companies.",
@@ -161,6 +188,7 @@ const translations = {
     "about.expertise.desc": "Deep knowledge in metal parts and manufacturing processes",
 
     // Services
+    "services.kicker": "Services",
     "services.title": "Our Services",
     "services.subtitle": "From first contact to delivery – we're with you all the way",
     "services.sourcing.title": "Sourcing & Supplier Matching",
@@ -177,6 +205,7 @@ const translations = {
       "Need custom metal parts? We coordinate production of customized components according to your drawings and specifications.",
 
     // Process
+    "process.kicker": "Process",
     "process.title": "Our Process",
     "process.subtitle": "A structured process that ensures quality at every step",
     "process.step1.title": "Consultation",
@@ -189,6 +218,7 @@ const translations = {
     "process.step4.desc": "Safe transport and delivery directly to your door in Sweden",
 
     // Why Choose Us
+    "why.kicker": "Why Alloy Nordic",
     "why.title": "Why Choose Alloy Nordic?",
     "why.subtitle": "We make international trade easy and safe for Swedish companies",
     "why.quality.title": "Quality Guarantee",
@@ -201,6 +231,7 @@ const translations = {
     "why.response.desc": "We always respond within 24 hours on weekdays",
 
     // Contact
+    "contact.kicker": "Contact",
     "contact.title": "Contact Us",
     "contact.subtitle": "Tell us about your project and we'll get back to you with a tailored solution",
     "contact.talk": "Let's talk",
@@ -223,6 +254,19 @@ const translations = {
     "contact.email": "Email",
     "contact.phone": "Phone",
     "contact.address": "Address",
+
+    // Materials
+    "materials.kicker": "Materials",
+    "materials.title": "Materials we work with",
+    "materials.subtitle": "We source a broad range of alloys and metals — from standard grades to specialised qualities.",
+    "materials.ss304": "Stainless steel",
+    "materials.ss316": "Marine stainless",
+    "materials.al6061": "Aluminium",
+    "materials.al7075": "High-strength aluminium",
+    "materials.ti": "Titanium",
+    "materials.brass": "Brass",
+    "materials.copper": "Copper",
+    "materials.tool": "Tool steel",
 
     // Footer
     "footer.tagline": "Quality without compromise",
