@@ -47,7 +47,7 @@ const Footer = () => {
               <div className="space-y-2 text-primary-foreground/70">
                 <p>info@alloynordic.se</p>
                 <p>+46 070 66 750 99</p>
-                <p>Stockholm, Sverige</p>
+                <p>Ågatan 47, 334 32 Anderstorp</p>
               </div>
             </div>
           </div>

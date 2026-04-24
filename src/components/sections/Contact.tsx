@@ -166,7 +166,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground">{t("contact.address")}</h4>
-                    <p className="text-muted-foreground">Stockholm, Sverige</p>
+                    <p className="text-muted-foreground">Ågatan 47, 334 32 Anderstorp</p>
                   </div>
                 </div>
               </div>
