@@ -1,64 +1,55 @@
-import { Search, ShieldCheck, Truck, Wrench } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SectionKicker from "@/components/SectionKicker";
 
 const Services = () => {
   const { t } = useLanguage();
 
   const services = [
-    {
-      icon: Search,
-      titleKey: "services.sourcing.title",
-      descKey: "services.sourcing.desc",
-    },
-    {
-      icon: ShieldCheck,
-      titleKey: "services.quality.title",
-      descKey: "services.quality.desc",
-    },
-    {
-      icon: Truck,
-      titleKey: "services.logistics.title",
-      descKey: "services.logistics.desc",
-    },
-    {
-      icon: Wrench,
-      titleKey: "services.custom.title",
-      descKey: "services.custom.desc",
-    },
+    { num: "01", titleKey: "services.sourcing.title", descKey: "services.sourcing.desc" },
+    { num: "02", titleKey: "services.quality.title", descKey: "services.quality.desc" },
+    { num: "03", titleKey: "services.logistics.title", descKey: "services.logistics.desc" },
+    { num: "04", titleKey: "services.custom.title", descKey: "services.custom.desc" },
   ];
 
   return (
-    <section id="tjanster" className="py-24 bg-muted/50">
+    <section id="tjanster" className="py-24 md:py-32 bg-secondary">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              {t("services.title")}
-            </h2>
-            <div className="w-24 h-1 bg-accent mx-auto mb-6" />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          {/* Header */}
+          <div className="grid md:grid-cols-12 gap-8 mb-16 items-end">
+            <div className="md:col-span-7">
+              <SectionKicker>{t("services.kicker")}</SectionKicker>
+              <h2 className="mt-4 text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                {t("services.title")}
+              </h2>
+            </div>
+            <p className="md:col-span-5 text-base text-muted-foreground leading-relaxed">
               {t("services.subtitle")}
             </p>
           </div>
-          
-          {/* Service Cards */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-shadow duration-300 border-2 hover:border-accent/50">
-                <CardHeader className="pb-4">
-                  <div className="w-14 h-14 bg-primary rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent transition-colors duration-300">
-                    <service.icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-xl">{t(service.titleKey)}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
-                    {t(service.descKey)}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+
+          {/* Service rows */}
+          <div className="border-t border-border">
+            {services.map((s, i) => (
+              <a
+                key={i}
+                href="#kontakt"
+                className="group grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-border hover:bg-background transition-colors px-2 -mx-2"
+              >
+                <div className="md:col-span-1 font-mono text-sm text-accent font-bold pt-2">
+                  {s.num}
+                </div>
+                <h3 className="md:col-span-4 text-2xl md:text-3xl font-bold text-foreground tracking-tight group-hover:text-accent transition-colors">
+                  {t(s.titleKey)}
+                </h3>
+                <p className="md:col-span-6 text-base text-muted-foreground leading-relaxed">
+                  {t(s.descKey)}
+                </p>
+                <div className="md:col-span-1 flex md:justify-end items-start pt-2">
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                </div>
+              </a>
             ))}
           </div>
         </div>

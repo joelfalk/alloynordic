@@ -5,14 +5,16 @@ const Footer = () => {
   const {
     t
   } = useLanguage();
-  return <footer className="bg-primary text-primary-foreground py-12">
+  return <footer className="bg-primary text-primary-foreground py-16 border-t border-white/10">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Company Info */}
             <div>
-              <h3 className="text-2xl font-bold mb-2">ALLOY NORDIC</h3>
-              <p className="text-primary-foreground/70">
+              <h3 className="text-2xl font-bold mb-3 tracking-tight">
+                ALL<span className="text-accent">O</span>Y NORDIC
+              </h3>
+              <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs">
                 {t("footer.tagline")}
               </p>
             </div>
