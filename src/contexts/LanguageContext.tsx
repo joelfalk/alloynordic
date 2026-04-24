@@ -12,7 +12,7 @@ const translations = {
   sv: {
     // Hero
     "hero.tagline": "Kvalitet utan kompromiss",
-    "hero.subtitle": "Din partner för metalldelar från Asien sen 1989",
+    "hero.subtitle": "Din partner för metalldelar sen 1989",
     "hero.cta.contact": "Kontakta oss",
     "hero.cta.about": "Om oss",
     "hero.cta.manufacturing": "Tillverkningsprocesser",
@@ -25,13 +25,13 @@ const translations = {
     "about.kicker": "Om oss",
     "about.title": "Om Alloy Nordic",
     "about.p1":
-      "Alloy Nordic är din pålitliga partner för högkvalitativa metalldelar från Asien. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer i Kina, erbjuder vi skräddarsydda lösningar för svenska företag.",
+      "Alloy Nordic är din pålitliga partner för högkvalitativa metalldelar från hela världen. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer, erbjuder vi skräddarsydda lösningar för svenska företag.",
     "about.p2":
-      "Vi förstår komplexiteten i internationell handel och tar hand om hela processen – från leverantörsval och kvalitetskontroll till logistik och leverans. Vårt mål är att göra det enkelt och tryggt för dig att sourca metalldelar från Kina med samma höga kvalitetskrav som du ställer på inhemsk produktion.",
+      "Vi förstår komplexiteten i internationell handel och tar hand om hela processen – från leverantörsval och kvalitetskontroll till logistik och leverans. Vårt mål är att göra det enkelt och tryggt för dig att sourca metalldelar med samma höga kvalitetskrav som du ställer på inhemsk produktion.",
     "about.p3":
       "Med Alloy Nordic som din partner får du en svensk kontaktperson som talar ditt språk och förstår dina behov, samtidigt som du drar nytta av konkurrenskraftiga priser och tillförlitlig kvalitet.",
     "about.global.title": "Globalt Nätverk",
-    "about.global.desc": "Etablerade relationer med pålitliga leverantörer i Kina",
+    "about.global.desc": "Etablerade relationer med pålitliga leverantörer världen över",
     "about.partner.title": "Svensk Partner",
     "about.partner.desc": "En lokal kontaktpunkt som förstår dina behov och krav",
     "about.expertise.title": "Branschexpertis",
@@ -46,7 +46,7 @@ const translations = {
       "Vi hittar rätt leverantör för dina specifika behov. Genom vårt omfattande nätverk identifierar vi tillverkare som matchar dina krav på kvalitet, kapacitet och pris.",
     "services.quality.title": "Kvalitetskontroll & Inspektion",
     "services.quality.desc":
-      "Innan leverans genomför vi noggrann kvalitetskontroll på plats i Kina. Vi säkerställer att varje detalj möter dina specifikationer och kvalitetsstandarder.",
+      "Innan leverans genomför vi noggrann kvalitetskontroll på plats hos leverantören. Vi säkerställer att varje detalj möter dina specifikationer och kvalitetsstandarder.",
     "services.logistics.title": "Logistik & Frakt",
     "services.logistics.desc":
       "Vi hanterar hela transportkedjan från fabrik till din dörr. Tull, dokumentation och spårning – vi tar hand om allt så att du kan fokusera på din kärnverksamhet.",
@@ -162,7 +162,7 @@ const translations = {
   en: {
     // Hero
     "hero.tagline": "Quality without compromise",
-    "hero.subtitle": "Your partner for metal parts from Asia since 1989",
+    "hero.subtitle": "Your partner for metal parts since 1989",
     "hero.cta.contact": "Contact us",
     "hero.cta.about": "About us",
     "hero.cta.manufacturing": "Manufacturing Processes",
@@ -175,13 +175,13 @@ const translations = {
     "about.kicker": "About",
     "about.title": "About Alloy Nordic",
     "about.p1":
-      "Alloy Nordic is your reliable partner for high-quality metal parts from Asia. With years of experience and an extensive network of carefully selected suppliers in China, we offer tailored solutions for Swedish companies.",
+      "Alloy Nordic is your reliable partner for high-quality metal parts from around the world. With years of experience and an extensive network of carefully selected suppliers, we offer tailored solutions for Swedish companies.",
     "about.p2":
-      "We understand the complexity of international trade and take care of the entire process – from supplier selection and quality control to logistics and delivery. Our goal is to make it easy and safe for you to source metal parts from China with the same high quality requirements as domestic production.",
+      "We understand the complexity of international trade and take care of the entire process – from supplier selection and quality control to logistics and delivery. Our goal is to make it easy and safe for you to source metal parts with the same high quality requirements as domestic production.",
     "about.p3":
       "With Alloy Nordic as your partner, you get a Swedish contact person who speaks your language and understands your needs, while benefiting from competitive prices and reliable quality.",
     "about.global.title": "Global Network",
-    "about.global.desc": "Established relationships with reliable suppliers in China",
+    "about.global.desc": "Established relationships with reliable suppliers worldwide",
     "about.partner.title": "Swedish Partner",
     "about.partner.desc": "A local contact point that understands your needs and requirements",
     "about.expertise.title": "Industry Expertise",
@@ -196,7 +196,7 @@ const translations = {
       "We find the right supplier for your specific needs. Through our extensive network, we identify manufacturers that match your requirements for quality, capacity, and price.",
     "services.quality.title": "Quality Control & Inspection",
     "services.quality.desc":
-      "Before delivery, we conduct thorough quality control on-site in China. We ensure that every detail meets your specifications and quality standards.",
+      "Before delivery, we conduct thorough quality control on-site at the supplier. We ensure that every detail meets your specifications and quality standards.",
     "services.logistics.title": "Logistics & Shipping",
     "services.logistics.desc":
       "We handle the entire transport chain from factory to your door. Customs, documentation, and tracking – we take care of everything so you can focus on your core business.",
