@@ -1,73 +1,57 @@
-import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SectionKicker from "@/components/SectionKicker";
 
 const Process = () => {
   const { t } = useLanguage();
 
   const steps = [
-    {
-      number: "01",
-      titleKey: "process.step1.title",
-      descKey: "process.step1.desc",
-    },
-    {
-      number: "02",
-      titleKey: "process.step2.title",
-      descKey: "process.step2.desc",
-    },
-    {
-      number: "03",
-      titleKey: "process.step3.title",
-      descKey: "process.step3.desc",
-    },
-    {
-      number: "04",
-      titleKey: "process.step4.title",
-      descKey: "process.step4.desc",
-    },
+    { num: "01", titleKey: "process.step1.title", descKey: "process.step1.desc" },
+    { num: "02", titleKey: "process.step2.title", descKey: "process.step2.desc" },
+    { num: "03", titleKey: "process.step3.title", descKey: "process.step3.desc" },
+    { num: "04", titleKey: "process.step4.title", descKey: "process.step4.desc" },
   ];
 
   return (
-    <section id="process" className="py-24 bg-background">
+    <section id="process" className="py-24 md:py-32 bg-background">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <SectionKicker className="justify-center">{t("process.kicker")}</SectionKicker>
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               {t("process.title")}
             </h2>
-            <div className="w-24 h-1 bg-accent mx-auto mb-6" />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-5 text-base text-muted-foreground leading-relaxed">
               {t("process.subtitle")}
             </p>
           </div>
-          
-          {/* Process Steps */}
-          <div className="grid md:grid-cols-4 gap-6">
-            {steps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="bg-card border rounded-lg p-6 h-full hover:shadow-lg transition-shadow duration-300">
-                  <div className="text-5xl font-bold text-primary/20 mb-4">
-                    {step.number}
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Connecting line — desktop horizontal */}
+            <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-px bg-border" />
+            <div
+              className="hidden md:block absolute top-6 left-[12.5%] h-px bg-accent"
+              style={{ width: "75%", transform: "scaleX(1)" }}
+            />
+
+            <div className="grid md:grid-cols-4 gap-10 md:gap-6 relative">
+              {steps.map((s, i) => (
+                <div key={i} className="relative flex md:flex-col gap-5 md:gap-0 md:text-center">
+                  {/* Dot */}
+                  <div className="flex-shrink-0 md:mx-auto w-12 h-12 rounded-full bg-background border-2 border-accent flex items-center justify-center font-mono text-sm font-bold text-accent relative z-10">
+                    {s.num}
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {t(step.titleKey)}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {t(step.descKey)}
-                  </p>
+                  <div className="md:mt-6 flex-1">
+                    <h3 className="text-xl font-bold text-foreground mb-2 tracking-tight">
+                      {t(s.titleKey)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {t(s.descKey)}
+                    </p>
+                  </div>
                 </div>
-                
-                {/* Arrow between steps (hidden on last item and mobile) */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:flex absolute top-1/2 -right-5 transform -translate-y-1/2 z-10">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <ArrowRight className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
