@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="container px-4">
           <div className="flex items-center gap-3 text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
             <span className="block w-12 h-px bg-accent" />
-            EST. 1989 · STOCKHOLM
+            EST. 2025 · ANDERSTORP
           </div>
         </div>
       </div>
