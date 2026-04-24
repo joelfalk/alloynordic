@@ -48,11 +48,6 @@ const Hero = () => {
             {t("hero.tagline")}
           </p>
 
-          {/* Subtitle */}
-          <p className="mt-5 text-base md:text-lg text-white/70 max-w-xl leading-relaxed">
-            {t("hero.subtitle")}
-          </p>
-
           {/* CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
             <Button
