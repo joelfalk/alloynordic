@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import SectionKicker from "@/components/SectionKicker";
 const Contact = () => {
   const {
     toast
@@ -74,16 +75,18 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-  return <section id="kontakt" className="py-24 bg-muted/50">
+  return <section id="kontakt" className="py-24 md:py-32 bg-background">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              {t("contact.title")}
-            </h2>
-            <div className="w-24 h-1 bg-accent mx-auto mb-6" />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-8 mb-16 items-end">
+            <div className="md:col-span-7">
+              <SectionKicker>{t("contact.kicker")}</SectionKicker>
+              <h2 className="mt-4 text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                {t("contact.title")}
+              </h2>
+            </div>
+            <p className="md:col-span-5 text-base text-muted-foreground leading-relaxed">
               {t("contact.subtitle")}
             </p>
           </div>
