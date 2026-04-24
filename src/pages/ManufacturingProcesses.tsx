@@ -132,7 +132,7 @@ const ManufacturingProcesses = () => {
 
   return (
     <main className="min-h-screen bg-primary">
-      <LanguageSwitcher />
+      <Navbar />
 
       {/* Fixed Back Button */}
       <motion.div
