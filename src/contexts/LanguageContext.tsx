@@ -24,10 +24,8 @@ const translations = {
     // About
     "about.kicker": "Om oss",
     "about.title": "Om Alloy Nordic",
-    "about.p1":
-      "Alloy Nordic är din pålitliga partner för högkvalitativa metalldelar från hela världen. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer, erbjuder vi skräddarsydda lösningar för svenska företag.",
-    "about.p2":
-      "Vi förstår komplexiteten i internationell handel och tar hand om hela processen – från leverantörsval och kvalitetskontroll till logistik och leverans. Vårt mål är att göra det enkelt och tryggt för dig att sourca metalldelar med samma höga kvalitetskrav som du ställer på inhemsk produktion.",
+    "about.p1": "Alloy Nordic är din pålitliga partner för högkvalitativa industridetaljer från hela världen. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer, erbjuder vi skräddarsydda lösningar för svenska företag.",
+    "about.p2": "Vi förstår komplexiteten i internationell handel och tar hand om hela processen – från leverantörsval och kvalitetskontroll till logistik och leverans. Vårt mål är att göra det enkelt och tryggt för dig att sourca detaljer med samma höga kvalitetskrav som du ställer på inhemsk produktion.",
     "about.p3":
       "Med Alloy Nordic som din partner får du en svensk kontaktperson som talar ditt språk och förstår dina behov, samtidigt som du drar nytta av konkurrenskraftiga priser och tillförlitlig kvalitet.",
     "about.global.title": "Globalt Nätverk",
@@ -35,7 +33,7 @@ const translations = {
     "about.partner.title": "Svensk Partner",
     "about.partner.desc": "En lokal kontaktpunkt som förstår dina behov och krav",
     "about.expertise.title": "Branschexpertis",
-    "about.expertise.desc": "Djup kunskap inom metalldelar och tillverkningsprocesser",
+    "about.expertise.desc": "Djup kunskap inom industridetaljer och tillverkningsprocesser",
 
     // Services
     "services.kicker": "Tjänster",
@@ -51,15 +49,14 @@ const translations = {
     "services.logistics.desc":
       "Vi hanterar hela transportkedjan från fabrik till din dörr. Tull, dokumentation och spårning – vi tar hand om allt så att du kan fokusera på din kärnverksamhet.",
     "services.custom.title": "Specialtillverkning",
-    "services.custom.desc":
-      "Behöver du skräddarsydda metalldelar? Vi koordinerar produktion av kundanpassade komponenter enligt dina ritningar och specifikationer.",
+    "services.custom.desc": "Behöver du skräddarsydda detaljer? Vi koordinerar produktion av kundanpassade komponenter enligt dina ritningar och specifikationer.",
 
     // Process
     "process.kicker": "Process",
     "process.title": "Vår Process",
     "process.subtitle": "En strukturerad process som säkerställer kvalitet i varje steg",
     "process.step1.title": "Konsultation",
-    "process.step1.desc": "Vi diskuterar dina behov, specifikationer och krav på metalldelar",
+    "process.step1.desc": "Vi diskuterar dina behov, specifikationer och krav på detaljer",
     "process.step2.title": "Leverantörsmatchning",
     "process.step2.desc": "Vi identifierar och utvärderar lämpliga leverantörer i vårt nätverk",
     "process.step3.title": "Kvalitetskontroll",
