@@ -137,9 +137,15 @@ const ManufacturingProcesses = () => {
         <title>Tillverkningsprocesser — Alloy Nordic</title>
         <meta name="description" content="Översikt över våra tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer i samarbete med utvalda leverantörer i Kina." />
         <link rel="canonical" href="https://alloynordic.se/tillverkningsprocesser" />
-        <meta property="og:title" content="Tillverkningsprocesser — Alloy Nordic" />
-        <meta property="og:description" content="Bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Tillverkningsprocesser — Bearbetning, Gjutning, Sintring & Varmpressning" />
+        <meta property="og:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
         <meta property="og:url" content="https://alloynordic.se/tillverkningsprocesser" />
+        <meta property="og:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tillverkningsprocesser — Bearbetning, Gjutning, Sintring & Varmpressning" />
+        <meta name="twitter:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
+        <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
       </Helmet>
       <Navbar />
 
