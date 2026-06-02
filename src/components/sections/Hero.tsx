@@ -11,9 +11,15 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-primary">
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
+      <img
+        src={heroBg}
+        alt=""
+        aria-hidden="true"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
       />
       {/* Layered overlays — keep image visible */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-primary/30" />
