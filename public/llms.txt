@@ -1,0 +1,15 @@
+# Alloy Nordic
+
+> Alloy Nordic is your reliable partner for high-quality industrial parts sourced from around the world. With years of experience and an extensive network of carefully selected suppliers, we provide tailored solutions for Swedish companies seeking competitive pricing without compromising on quality.
+
+Alloy Nordic (formerly Ferrinox AB) specializes in sourcing, quality control, logistics, and custom manufacturing coordination for industrial metal components. We bridge the gap between Swedish quality demands and global manufacturing capabilities, primarily in China. Our services include supplier matching, on-site quality inspection, end-to-end logistics handling, and coordination of custom-made components according to your drawings and specifications.
+
+## Pages
+
+- [Hem](/): Homepage with overview of Alloy Nordic's services, company introduction, process steps, and contact form.
+- [Tillverkningsprocesser](/tillverkningsprocesser): Detailed overview of manufacturing processes including machining, casting, sintering, and hot pressing — with capabilities, advantages, and material options for each method.
+
+## Optional
+
+- [Sitemap](/sitemap.xml): XML sitemap for search engines.
+- [Robots](/robots.txt): Crawler directives and sitemap reference.
