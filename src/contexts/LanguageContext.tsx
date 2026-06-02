@@ -76,6 +76,10 @@ const translations = {
     "why.contact.desc": "En personlig kontaktperson som talar ditt språk",
     "why.response.title": "Snabb Respons",
     "why.response.desc": "Vi återkommer alltid inom 24 timmar på vardagar",
+    "why.endtoend.title": "Helhetslösning",
+    "why.endtoend.desc": "Vi hanterar allt från sourcing och kvalitetskontroll till logistik och leverans",
+    "why.trust.title": "Trygghet",
+    "why.trust.desc": "En svensk kontaktperson som tar hand om hela processen och minimerar dina risker",
 
     // Contact
     "contact.kicker": "Kontakt",
@@ -226,6 +230,10 @@ const translations = {
     "why.contact.desc": "A personal contact person who speaks your language",
     "why.response.title": "Fast Response",
     "why.response.desc": "We always respond within 24 hours on weekdays",
+    "why.endtoend.title": "End-to-End Solution",
+    "why.endtoend.desc": "We handle everything from sourcing and quality control to logistics and delivery",
+    "why.trust.title": "Peace of Mind",
+    "why.trust.desc": "A Swedish contact person who manages the entire process and minimizes your risks",
 
     // Contact
     "contact.kicker": "Contact",
