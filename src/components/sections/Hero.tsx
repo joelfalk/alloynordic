@@ -32,15 +32,20 @@ const Hero = () => {
       <div className="container relative z-10 px-4 pt-24 pb-32">
         <div className="max-w-4xl">
           {/* Company Name */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight flex items-center gap-0 leading-none">
-            <span>ALL</span>
-            <img
-              src={alloyIcon}
-              alt="O"
-              className="h-[0.85em] w-auto inline-block brightness-0 invert"
-            />
-            <span>Y</span>
-            <span className="text-accent ml-3 sm:ml-4">NORDIC</span>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none">
+            <span className="flex items-center gap-0">
+              <span>ALL</span>
+              <img
+                src={alloyIcon}
+                alt="Alloy Nordic logo icon"
+                className="h-[0.85em] w-auto inline-block brightness-0 invert"
+              />
+              <span>Y</span>
+              <span className="text-accent ml-3 sm:ml-4">NORDIC</span>
+            </span>
+            <span className="block text-2xl sm:text-3xl md:text-4xl mt-2 font-medium text-white/90">
+              — Kvalitetsdelar i metall
+            </span>
           </h1>
 
           {/* Tagline */}
