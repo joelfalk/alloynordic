@@ -34,9 +34,15 @@ const Index = () => {
         <title>Alloy Nordic — Global Sourcing for Metal Parts</title>
         <meta name="description" content="Alloy Nordic är din partner för global sourcing av industridetaljer från Kina till Sverige — kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
         <link rel="canonical" href="https://alloynordic.se/" />
-        <meta property="og:title" content="Alloy Nordic — Global Sourcing for Metal Parts" />
-        <meta property="og:description" content="Pålitlig partner för sourcing av industridetaljer från Kina med kvalitetskontroll, logistik och skräddarsydd produktion." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Alloy Nordic — Industrial Sourcing från Kina till Sverige" />
+        <meta property="og:description" content="Alloy Nordic är din partner för global sourcing av metalldetaljer — skräddarsydd produktion enligt ritning, kvalitetskontroll och logistik från Kina till Sverige." />
         <meta property="og:url" content="https://alloynordic.se/" />
+        <meta property="og:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Alloy Nordic — Industrial Sourcing från Kina till Sverige" />
+        <meta name="twitter:description" content="Alloy Nordic är din partner för global sourcing av metalldetaljer — skräddarsydd produktion enligt ritning, kvalitetskontroll och logistik från Kina till Sverige." />
+        <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
       </Helmet>
       <Navbar />
       <Hero />
