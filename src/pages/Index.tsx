@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
@@ -29,6 +30,14 @@ const Index = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>Alloy Nordic — Global Sourcing for Metal Parts</title>
+        <meta name="description" content="Alloy Nordic är din partner för global sourcing av industridetaljer från Kina till Sverige — kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
+        <link rel="canonical" href="https://alloynordic.se/" />
+        <meta property="og:title" content="Alloy Nordic — Global Sourcing for Metal Parts" />
+        <meta property="og:description" content="Pålitlig partner för sourcing av industridetaljer från Kina med kvalitetskontroll, logistik och skräddarsydd produktion." />
+        <meta property="og:url" content="https://alloynordic.se/" />
+      </Helmet>
       <Navbar />
       <Hero />
       <About />
