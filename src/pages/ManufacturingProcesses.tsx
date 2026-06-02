@@ -146,6 +146,35 @@ const ManufacturingProcesses = () => {
         <meta name="twitter:title" content="Tillverkningsprocesser — Bearbetning, Gjutning, Sintring & Varmpressning" />
         <meta name="twitter:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
         <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Tillverkningsprocesser",
+          "url": "https://alloynordic.se/tillverkningsprocesser",
+          "description": "Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer.",
+          "hasPart": [
+            {
+              "@type": "Service",
+              "name": "Bearbetning (Machining)",
+              "description": "Svarvning, fräsning och CNC-bearbetning för högprecisionsdetaljer i metall."
+            },
+            {
+              "@type": "Service",
+              "name": "Gjutning (Casting)",
+              "description": "Sandgjutning och precisionsgjutning för komplexa former och stora serier."
+            },
+            {
+              "@type": "Service",
+              "name": "Sintring (Sintering)",
+              "description": "Pulvermetallurgi och sintring för hållbara och komplexa komponenter."
+            },
+            {
+              "@type": "Service",
+              "name": "Varmpressning (Hot Pressing)",
+              "description": "Varmpressning och smide för extrem styrka och slitstyrka i metall."
+            }
+          ]
+        })}</script>
       </Helmet>
       <Navbar />
 
