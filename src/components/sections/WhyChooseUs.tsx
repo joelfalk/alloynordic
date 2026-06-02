@@ -1,4 +1,4 @@
-import { Award, Clock, MessageSquare, Wallet } from "lucide-react";
+import { Award, Clock, Globe, MessageSquare, Shield, Wallet } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SectionKicker from "@/components/SectionKicker";
 
@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
           </div>
 
           {/* Bento grid */}
-          <div className="grid md:grid-cols-3 md:grid-rows-2 gap-4 md:gap-5">
+          <div className="grid md:grid-cols-3 md:grid-rows-3 gap-4 md:gap-5">
             {/* Large card */}
             <div className="md:col-span-2 md:row-span-2 p-8 md:p-10 bg-white/[0.04] border border-white/10 hover:border-accent/50 transition-colors flex flex-col justify-between min-h-[320px]">
               <Award className="w-10 h-10 text-accent" strokeWidth={1.5} />
@@ -46,18 +46,17 @@ const WhyChooseUs = () => {
               </div>
             </div>
 
-            {/* Three small */}
+            {/* Small cards */}
             {[
               { icon: Wallet, titleKey: "why.cost.title", descKey: "why.cost.desc" },
               { icon: MessageSquare, titleKey: "why.contact.title", descKey: "why.contact.desc" },
               { icon: Clock, titleKey: "why.response.title", descKey: "why.response.desc" },
+              { icon: Globe, titleKey: "why.endtoend.title", descKey: "why.endtoend.desc" },
+              { icon: Shield, titleKey: "why.trust.title", descKey: "why.trust.desc" },
             ].map((b, i) => (
               <div
                 key={i}
-                className={
-                  "p-6 bg-white/[0.04] border border-white/10 hover:border-accent/50 transition-colors flex flex-col gap-3 min-h-[150px]" +
-                  (i === 2 ? " md:col-span-1" : "")
-                }
+                className="p-6 bg-white/[0.04] border border-white/10 hover:border-accent/50 transition-colors flex flex-col gap-3 min-h-[150px]"
               >
                 <b.icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
                 <h3 className="text-lg font-semibold tracking-tight">{t(b.titleKey)}</h3>
