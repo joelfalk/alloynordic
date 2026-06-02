@@ -16,7 +16,7 @@ const Footer = () => {
                 <span>ALL</span>
                 <img
                   src={alloyIcon}
-                  alt="O"
+                  alt="Alloy Nordic logo icon"
                   className="h-[0.85em] w-auto inline-block brightness-0 invert"
                 />
                 <span>Y&nbsp;NORDIC</span>
