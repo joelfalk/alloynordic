@@ -133,6 +133,14 @@ const ManufacturingProcesses = () => {
 
   return (
     <main className="min-h-screen bg-primary">
+      <Helmet>
+        <title>Tillverkningsprocesser — Alloy Nordic</title>
+        <meta name="description" content="Översikt över våra tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer i samarbete med utvalda leverantörer i Kina." />
+        <link rel="canonical" href="https://alloynordic.se/tillverkningsprocesser" />
+        <meta property="og:title" content="Tillverkningsprocesser — Alloy Nordic" />
+        <meta property="og:description" content="Bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
+        <meta property="og:url" content="https://alloynordic.se/tillverkningsprocesser" />
+      </Helmet>
       <Navbar />
 
       {/* Fixed Back Button */}
