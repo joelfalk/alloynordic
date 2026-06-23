@@ -49,14 +49,20 @@ const Hero = () => {
               <span>Y</span>
               <span className="text-accent ml-3 sm:ml-4">NORDIC</span>
             </span>
-            <span className="block text-2xl sm:text-3xl md:text-4xl mt-2 font-medium text-white/90">
-              — Kvalitetsdelar i metall
-            </span>
           </h1>
 
-          {/* Tagline */}
-          <p className="mt-8 text-2xl md:text-3xl lg:text-4xl text-white font-light tracking-tight max-w-2xl">
-            {t("hero.tagline")}
+          {/* Banner */}
+          <p className="mt-8 text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl">
+            {t("hero.banner.lead")}
+          </p>
+          <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl">
+            {t("hero.banner.bold1")}
+          </p>
+          <p className="mt-3 text-base md:text-lg font-light text-white/85 max-w-2xl">
+            {t("hero.banner.body")}
+          </p>
+          <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl">
+            {t("hero.banner.bold2")}
           </p>
 
           {/* CTAs */}
