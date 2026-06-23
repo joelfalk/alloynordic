@@ -51,19 +51,39 @@ const Hero = () => {
             </span>
           </h1>
 
-          {/* Banner */}
-          <p className="mt-8 text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl">
-            {t("hero.banner.lead")}
-          </p>
-          <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl">
-            {t("hero.banner.bold1")}
-          </p>
-          <p className="mt-3 text-base md:text-lg font-light text-white/85 max-w-2xl">
-            {t("hero.banner.body")}
-          </p>
-          <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl">
-            {t("hero.banner.bold2")}
-          </p>
+          {/* Banner — curtain reveal */}
+          <div className="mt-8 overflow-hidden">
+            <p
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl will-change-transform motion-safe:animate-curtain-down"
+              style={{ animationDelay: "0.05s" }}
+            >
+              {t("hero.banner.lead")}
+            </p>
+          </div>
+          <div className="mt-5 overflow-hidden">
+            <p
+              className="text-base md:text-lg font-bold text-white max-w-2xl will-change-transform motion-safe:animate-curtain-down"
+              style={{ animationDelay: "0.25s" }}
+            >
+              {t("hero.banner.bold1")}
+            </p>
+          </div>
+          <div className="mt-3 overflow-hidden">
+            <p
+              className="text-base md:text-lg font-light text-white/85 max-w-2xl will-change-transform motion-safe:animate-curtain-down"
+              style={{ animationDelay: "0.45s" }}
+            >
+              {t("hero.banner.body")}
+            </p>
+          </div>
+          <div className="mt-4 overflow-hidden">
+            <p
+              className="text-base md:text-lg font-bold text-accent max-w-2xl will-change-transform motion-safe:animate-curtain-down"
+              style={{ animationDelay: "0.65s" }}
+            >
+              {t("hero.banner.bold2")}
+            </p>
+          </div>
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
