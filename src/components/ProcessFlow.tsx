@@ -29,7 +29,7 @@ const StepCard = ({ step, delay }: { step: Step; delay: number }) => {
   const { t } = useLanguage();
   return (
     <div
-      className="group relative flex h-full w-full min-h-[14rem] flex-col gap-3 border border-white/15 bg-white/5 backdrop-blur-sm p-5 motion-safe:opacity-0 motion-safe:animate-slide-in-left transition-colors hover:border-accent/60 hover:bg-white/[0.08]"
+      className="group relative flex h-full w-full min-h-[16rem] flex-col gap-3 border border-white/15 bg-white/5 backdrop-blur-sm p-6 motion-safe:opacity-0 motion-safe:animate-slide-in-left transition-colors hover:border-accent/60 hover:bg-white/[0.08]"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-center justify-between">
@@ -38,10 +38,10 @@ const StepCard = ({ step, delay }: { step: Step; delay: number }) => {
           <step.Icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
         </span>
       </div>
-      <h3 className="text-base md:text-lg font-semibold text-white leading-tight">
+      <h3 className="text-base md:text-lg font-semibold text-white leading-tight break-words">
         {t(`${step.key}.title`)}
       </h3>
-      <p className="text-sm text-white/70 leading-relaxed">
+      <p className="text-sm text-white/70 leading-relaxed break-words">
         {t(`${step.key}.desc`)}
       </p>
     </div>
@@ -70,8 +70,8 @@ const Connector = ({ delay, vertical = false }: { delay: number; vertical?: bool
 const ProcessFlow = () => {
   return (
     <div aria-label="AI-driven RFQ process">
-      {/* Desktop: 7 lika stora kort i grid med animerade konnektorer */}
-      <ol className="hidden lg:grid grid-cols-7 gap-3 items-stretch">
+      {/* XL desktop: 7 lika stora kort i en rad med animerade konnektorer */}
+      <ol className="hidden xl:grid grid-cols-7 gap-3 items-stretch">
         {STEPS.map((step, i) => {
           const delay = BASE_DELAY + i * STEP_STEP;
           return (
@@ -88,6 +88,15 @@ const ProcessFlow = () => {
             </li>
           );
         })}
+      </ol>
+
+      {/* LG desktop: 4 + 3 (bredare rutor) */}
+      <ol className="hidden lg:grid xl:hidden grid-cols-4 gap-4 items-stretch">
+        {STEPS.map((step, i) => (
+          <li key={step.num} className="h-full">
+            <StepCard step={step} delay={BASE_DELAY + i * STEP_STEP} />
+          </li>
+        ))}
       </ol>
 
       {/* Tablet: 2/3-kolumns grid med lika stora kort */}

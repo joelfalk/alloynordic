@@ -69,7 +69,7 @@ const Hero = () => {
         </div>
 
         {/* Processflöde — ersätter brödtexten */}
-        <div className="max-w-6xl mx-auto mt-12">
+        <div className="max-w-7xl mx-auto mt-12">
           <ProcessFlow />
         </div>
 
