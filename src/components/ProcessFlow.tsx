@@ -1,77 +1,114 @@
-import { FileSearch, Users, Inbox, LineChart, Award, type LucideIcon } from "lucide-react";
+import {
+  FileSearch,
+  BrainCircuit,
+  Globe2,
+  Inbox,
+  ScanSearch,
+  Sparkles,
+  Presentation,
+  type LucideIcon,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-type Step = { num: string; labelKey: string; Icon: LucideIcon };
+type Step = { num: string; key: string; Icon: LucideIcon };
 
 const STEPS: Step[] = [
-  { num: "01", labelKey: "hero.flow.step1", Icon: FileSearch },
-  { num: "02", labelKey: "hero.flow.step2", Icon: Users },
-  { num: "03", labelKey: "hero.flow.step3", Icon: Inbox },
-  { num: "04", labelKey: "hero.flow.step4", Icon: LineChart },
-  { num: "05", labelKey: "hero.flow.step5", Icon: Award },
+  { num: "01", key: "hero.flow.step1", Icon: FileSearch },
+  { num: "02", key: "hero.flow.step2", Icon: BrainCircuit },
+  { num: "03", key: "hero.flow.step3", Icon: Globe2 },
+  { num: "04", key: "hero.flow.step4", Icon: Inbox },
+  { num: "05", key: "hero.flow.step5", Icon: ScanSearch },
+  { num: "06", key: "hero.flow.step6", Icon: Sparkles },
+  { num: "07", key: "hero.flow.step7", Icon: Presentation },
 ];
 
-const BASE_DELAY = 900; // ms — efter hero-rullgardinen
-const STEP_STEP = 120;  // ms mellan steg
+const BASE_DELAY = 600;
+const STEP_STEP = 140;
+
+const StepCard = ({ step, delay }: { step: Step; delay: number }) => {
+  const { t } = useLanguage();
+  return (
+    <div
+      className="group relative flex h-full flex-col gap-3 border border-white/15 bg-white/5 backdrop-blur-sm p-5 motion-safe:opacity-0 motion-safe:animate-slide-in-left transition-colors hover:border-accent/60 hover:bg-white/[0.08]"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <div className="flex items-center justify-between">
+        <span className="font-mono text-xs text-accent tracking-[0.25em]">{step.num}</span>
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 ring-1 ring-accent/40">
+          <step.Icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
+        </span>
+      </div>
+      <h3 className="text-base md:text-lg font-semibold text-white leading-tight">
+        {t(`${step.key}.title`)}
+      </h3>
+      <p className="text-sm text-white/70 leading-relaxed">
+        {t(`${step.key}.desc`)}
+      </p>
+    </div>
+  );
+};
+
+const Connector = ({ delay, vertical = false }: { delay: number; vertical?: boolean }) => (
+  <div
+    className={
+      vertical
+        ? "relative mx-auto h-6 w-px bg-white/15 overflow-hidden"
+        : "relative flex-1 h-px bg-white/15 overflow-hidden self-center"
+    }
+  >
+    <div
+      className={`absolute inset-0 bg-accent ${
+        vertical
+          ? "origin-top motion-safe:scale-y-0"
+          : "origin-left motion-safe:scale-x-0"
+      } motion-safe:animate-connector-grow`}
+      style={{ animationDelay: `${delay}ms` }}
+    />
+  </div>
+);
 
 const ProcessFlow = () => {
-  const { t } = useLanguage();
-
   return (
-    <div className="mt-8 max-w-3xl" aria-label={t("hero.banner.body")}>
-      {/* Desktop / tablet: horisontellt */}
-      <ol className="hidden md:flex items-center gap-3">
-        {STEPS.map((step, i) => (
-          <li key={step.num} className="flex items-center gap-3 flex-1 last:flex-none">
-            <div
-              className="flex flex-col items-start gap-2 motion-safe:opacity-0 motion-safe:animate-slide-in-left"
-              style={{ animationDelay: `${BASE_DELAY + i * STEP_STEP}ms` }}
-            >
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-accent tracking-[0.2em]">{step.num}</span>
-                <step.Icon className="w-4 h-4 text-white/70" strokeWidth={1.5} />
+    <div aria-label="AI-driven RFQ process">
+      {/* Desktop: horisontellt flöde med kort + konnektorer */}
+      <ol className="hidden lg:flex items-stretch">
+        {STEPS.map((step, i) => {
+          const delay = BASE_DELAY + i * STEP_STEP;
+          return (
+            <li key={step.num} className="flex items-stretch flex-1 last:flex-none">
+              <div className="flex-1">
+                <StepCard step={step} delay={delay} />
               </div>
-              <span className="text-xs md:text-sm font-medium text-white/90 uppercase tracking-wider whitespace-nowrap">
-                {t(step.labelKey)}
-              </span>
-            </div>
+              {i < STEPS.length - 1 && (
+                <div className="w-6 flex">
+                  <Connector delay={delay + 220} />
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ol>
 
-            {i < STEPS.length - 1 && (
-              <div className="relative flex-1 h-px bg-white/15 overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-accent origin-left motion-safe:scale-x-0 motion-safe:animate-connector-grow"
-                  style={{ animationDelay: `${BASE_DELAY + i * STEP_STEP + 200}ms` }}
-                />
-              </div>
-            )}
+      {/* Tablet: 2 rader om 4 + 3 */}
+      <ol className="hidden md:grid lg:hidden grid-cols-2 sm:grid-cols-3 gap-4">
+        {STEPS.map((step, i) => (
+          <li key={step.num}>
+            <StepCard step={step} delay={BASE_DELAY + i * STEP_STEP} />
           </li>
         ))}
       </ol>
 
       {/* Mobil: vertikalt */}
-      <ol className="md:hidden flex flex-col gap-2">
-        {STEPS.map((step, i) => (
-          <li key={step.num} className="flex flex-col items-start">
-            <div
-              className="flex items-center gap-3 motion-safe:opacity-0 motion-safe:animate-slide-in-left"
-              style={{ animationDelay: `${BASE_DELAY + i * STEP_STEP}ms` }}
-            >
-              <span className="font-mono text-xs text-accent tracking-[0.2em]">{step.num}</span>
-              <step.Icon className="w-4 h-4 text-white/70" strokeWidth={1.5} />
-              <span className="text-sm font-medium text-white/90 uppercase tracking-wider">
-                {t(step.labelKey)}
-              </span>
-            </div>
-            {i < STEPS.length - 1 && (
-              <div className="ml-[0.4rem] w-px h-4 bg-white/15 relative overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-accent origin-top motion-safe:scale-y-0 motion-safe:animate-connector-grow"
-                  style={{ animationDelay: `${BASE_DELAY + i * STEP_STEP + 200}ms` }}
-                />
-              </div>
-            )}
-          </li>
-        ))}
+      <ol className="md:hidden flex flex-col">
+        {STEPS.map((step, i) => {
+          const delay = BASE_DELAY + i * STEP_STEP;
+          return (
+            <li key={step.num} className="flex flex-col">
+              <StepCard step={step} delay={delay} />
+              {i < STEPS.length - 1 && <Connector delay={delay + 220} vertical />}
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
