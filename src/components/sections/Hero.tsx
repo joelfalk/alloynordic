@@ -61,20 +61,21 @@ const Hero = () => {
               <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl">
                 {t("hero.banner.bold1")}
               </p>
-              <p className="mt-3 text-base md:text-lg font-light text-white/85 max-w-2xl">
-                {t("hero.banner.body")}
-              </p>
               <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl">
                 {t("hero.banner.bold2")}
               </p>
             </div>
           </div>
+        </div>
 
-          {/* Processflöde — visualiserar brödtexten */}
+        {/* Processflöde — ersätter brödtexten */}
+        <div className="max-w-6xl mt-12">
           <ProcessFlow />
+        </div>
 
+        <div className="max-w-4xl">
           {/* CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-5">
             <Button
               asChild
               size="lg"
