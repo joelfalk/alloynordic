@@ -53,7 +53,7 @@ const Hero = () => {
 
           {/* Banner — curtain reveal (single continuous block) */}
           <div className="mt-8 overflow-hidden">
-            <div className="will-change-transform motion-safe:animate-curtain-down [mask-image:linear-gradient(to_bottom,transparent_0%,black_60%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_60%)]">
+            <div className="will-change-transform motion-safe:animate-curtain-down">
               <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl">
                 {t("hero.banner.lead")}
               </p>
