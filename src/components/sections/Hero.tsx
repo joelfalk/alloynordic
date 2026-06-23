@@ -51,38 +51,22 @@ const Hero = () => {
             </span>
           </h1>
 
-          {/* Banner — curtain reveal */}
+          {/* Banner — curtain reveal (single continuous block) */}
           <div className="mt-8 overflow-hidden">
-            <p
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.10s" }}
-            >
-              {t("hero.banner.lead")}
-            </p>
-          </div>
-          <div className="mt-5 overflow-hidden">
-            <p
-              className="text-base md:text-lg font-bold text-white max-w-2xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.28s" }}
-            >
-              {t("hero.banner.bold1")}
-            </p>
-          </div>
-          <div className="mt-3 overflow-hidden">
-            <p
-              className="text-base md:text-lg font-light text-white/85 max-w-2xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.46s" }}
-            >
-              {t("hero.banner.body")}
-            </p>
-          </div>
-          <div className="mt-4 overflow-hidden">
-            <p
-              className="text-base md:text-lg font-bold text-accent max-w-2xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.64s" }}
-            >
-              {t("hero.banner.bold2")}
-            </p>
+            <div className="will-change-transform motion-safe:animate-curtain-down [mask-image:linear-gradient(to_bottom,transparent_0%,black_60%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_60%)]">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl">
+                {t("hero.banner.lead")}
+              </p>
+              <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl">
+                {t("hero.banner.bold1")}
+              </p>
+              <p className="mt-3 text-base md:text-lg font-light text-white/85 max-w-2xl">
+                {t("hero.banner.body")}
+              </p>
+              <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl">
+                {t("hero.banner.bold2")}
+              </p>
+            </div>
           </div>
 
           {/* CTAs */}
