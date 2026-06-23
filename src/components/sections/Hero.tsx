@@ -55,7 +55,7 @@ const Hero = () => {
           <div className="mt-8 overflow-hidden">
             <p
               className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.05s" }}
+              style={{ animationDelay: "0.10s" }}
             >
               {t("hero.banner.lead")}
             </p>
@@ -63,7 +63,7 @@ const Hero = () => {
           <div className="mt-5 overflow-hidden">
             <p
               className="text-base md:text-lg font-bold text-white max-w-2xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.25s" }}
+              style={{ animationDelay: "0.28s" }}
             >
               {t("hero.banner.bold1")}
             </p>
@@ -71,7 +71,7 @@ const Hero = () => {
           <div className="mt-3 overflow-hidden">
             <p
               className="text-base md:text-lg font-light text-white/85 max-w-2xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.45s" }}
+              style={{ animationDelay: "0.46s" }}
             >
               {t("hero.banner.body")}
             </p>
@@ -79,7 +79,7 @@ const Hero = () => {
           <div className="mt-4 overflow-hidden">
             <p
               className="text-base md:text-lg font-bold text-accent max-w-2xl will-change-transform motion-safe:animate-curtain-down"
-              style={{ animationDelay: "0.65s" }}
+              style={{ animationDelay: "0.64s" }}
             >
               {t("hero.banner.bold2")}
             </p>
