@@ -24,6 +24,11 @@ const translations = {
     "hero.stat.countries": "Länder",
     "hero.stat.response": "Svarstid",
     "hero.stat.qc": "Kvalitetskontroll",
+    "hero.flow.step1": "Förfrågan",
+    "hero.flow.step2": "Leverantörsval",
+    "hero.flow.step3": "Offertinsamling",
+    "hero.flow.step4": "Analys",
+    "hero.flow.step5": "Utvärdering",
 
     // About
     "about.kicker": "Om oss",
@@ -179,6 +184,11 @@ const translations = {
     "hero.stat.countries": "Countries",
     "hero.stat.response": "Response time",
     "hero.stat.qc": "Quality control",
+    "hero.flow.step1": "Request",
+    "hero.flow.step2": "Supplier selection",
+    "hero.flow.step3": "Quote collection",
+    "hero.flow.step4": "Analysis",
+    "hero.flow.step5": "Benchmarking",
 
     // About
     "about.kicker": "About",
