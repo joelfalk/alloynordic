@@ -12,6 +12,10 @@ const translations = {
   sv: {
     // Hero
     "hero.tagline": "Kvalitet utan kompromiss",
+    "hero.banner.lead": "Framtidens sourcing börjar med AI",
+    "hero.banner.bold1": "Vi automatiserar offertprocessen och öppnar dörren till ett globalt nätverk av kvalificerade leverantörer.",
+    "hero.banner.body": "Genom att kombinera djup sourcingkompetens med egenutvecklade AI-verktyg effektiviserar vi hela processen – från förfrågan och leverantörsval till offertinsamling, analys och utvärdering. Det ger snabbare beslut, bättre leverantörsalternativ och mer konkurrenskraftiga priser.",
+    "hero.banner.bold2": "AI-driven offertautomation. Global sourcing. Bättre affärer.",
     "hero.subtitle": "Din partner för metalldelar sen 1989",
     "hero.cta.contact": "Kontakta oss",
     "hero.cta.about": "Om oss",
@@ -120,7 +124,7 @@ const translations = {
     "materials.tool": "Verktygsstål",
 
     // Footer
-    "footer.tagline": "Kvalitet utan kompromiss",
+    "footer.tagline": "AI-driven offertautomation. Global sourcing. Bättre affärer.",
     "footer.quickLinks": "Snabblänkar",
     "footer.contact": "Kontakt",
     "footer.about": "Om oss",
@@ -163,6 +167,10 @@ const translations = {
   en: {
     // Hero
     "hero.tagline": "Quality without compromise",
+    "hero.banner.lead": "AI-Driven RFQ Automation for Global Manufacturing",
+    "hero.banner.bold1": "Automate quotations. Access global suppliers. Make smarter sourcing decisions.",
+    "hero.banner.body": "We combine sourcing expertise with proprietary AI technology that automates the entire RFQ workflow—from supplier identification and qualification to quote collection, analysis, and benchmarking. The result is faster sourcing cycles, reduced administrative workload, and more competitive supplier solutions worldwide.",
+    "hero.banner.bold2": "Automated RFQs. Global supplier access. Smarter procurement decisions.",
     "hero.subtitle": "Your partner for metal parts since 1989",
     "hero.cta.contact": "Contact us",
     "hero.cta.about": "About us",
@@ -274,7 +282,7 @@ const translations = {
     "materials.tool": "Tool steel",
 
     // Footer
-    "footer.tagline": "Quality without compromise",
+    "footer.tagline": "Automated RFQs. Global supplier access. Smarter procurement decisions.",
     "footer.quickLinks": "Quick Links",
     "footer.contact": "Contact",
     "footer.about": "About us",
