@@ -1,41 +1,30 @@
 ## Mål
-Ersätt brödtexten (rad 3) i hero med ett större, mer framträdande animerat AI-flöde i 7 steg. Varje steg har en rubrik och en kort, modern beskrivning under rubriken.
+Centrera hero-innehållet (rad 1–3) horisontellt på sidan och centrera det animerade flödet så att alla 7 stegrutor får exakt samma storlek.
 
-## Steg och copy
-
-| # | Rubrik (SV) | Beskrivning (SV) | Rubrik (EN) | Beskrivning (EN) |
-|---|---|---|---|---|
-| 01 | Förfrågan | Kunden skickar in sin förfrågan – startpunkten för hela flödet. | Request | The customer submits their request — the starting point of the flow. |
-| 02 | AI-analys av input | Vårt AI läser, strukturerar och sammanställer all data ur förfrågan. | AI input analysis | Our AI reads, structures and consolidates all data from the request. |
-| 03 | Global utskick | Förfrågan skickas automatiskt till relevanta leverantörer i vårt globala nätverk. | Global distribution | The RFQ is sent automatically to relevant suppliers in our global network. |
-| 04 | Offertinsamling | Inkommande offerter samlas in och knyts mot rätt RFQ i realtid. | Quote collection | Incoming quotes are gathered and matched to the right RFQ in real time. |
-| 05 | Kvalitets- & prisanalys | AI utvärderar varje offert mot kvalitet, pris och tekniska krav. | Quality & price analysis | AI evaluates each quote against quality, price and technical requirements. |
-| 06 | AI-rekommendation | AI väger pris, kvalitet, ledtid och andra parametrar och rekommenderar bästa offert. | AI recommendation | AI weighs price, quality, lead time and other parameters to recommend the best quote. |
-| 07 | Presentation till kund | Slutresultatet presenteras tydligt och beslutsfärdigt för kunden. | Customer presentation | The final result is presented to the customer — clear and ready for decision. |
-
-## Filändringar
-
-### `src/contexts/LanguageContext.tsx`
-- Byt ut nuvarande `hero.flow.step1`–`step5` mot `hero.flow.step1`–`step7` med både `.title` och `.desc` per steg (SV + EN), enligt tabellen.
-- Behåll `hero.banner.body` i filen (oanvänd men ofarlig) eller ta bort båda språken – ta bort båda för städning.
+## Ändringar
 
 ### `src/components/sections/Hero.tsx`
-- Ta bort `<p>` som renderar `hero.banner.body` (rad 3).
-- Behåll `hero.banner.bold1` (rad 2) och `hero.banner.bold2` (rad 4).
-- Öka utrymmet runt `<ProcessFlow />`: byt containerbredd till `max-w-6xl` enbart för flödesblocket, `mt-12` ovanför, `mt-12` till CTA.
+- Byt yttre wrapper `<div className="max-w-4xl">` → `<div className="max-w-5xl mx-auto text-center">` så rad 1 (ALLOY NORDIC), rad 2 (`hero.banner.lead`) och rad 3 (`hero.banner.bold1` + `hero.banner.bold2`) blir centrerade.
+- Rad 1 `<h1>`: ändra `<span className="flex items-center gap-0">` → `flex items-center justify-center gap-0`.
+- Rad 2 `<p>` (`hero.banner.lead`): ta bort `max-w-3xl`, lägg till `mx-auto`.
+- Rad 3a `<p>` (`hero.banner.bold1`): ta bort `max-w-2xl`, lägg till `mx-auto`.
+- Rad 3b `<p>` (`hero.banner.bold2`): ta bort `max-w-2xl`, lägg till `mx-auto`.
+- Flödes-wrapper: byt `<div className="max-w-6xl mt-12">` → `<div className="max-w-6xl mx-auto mt-12">`.
+- CTA-wrapper: byt `<div className="max-w-4xl">` → `<div className="max-w-4xl mx-auto">` och ändra CTA-raden till `justify-center` (`flex flex-col sm:flex-row items-center justify-center gap-5`).
 
 ### `src/components/ProcessFlow.tsx`
-- Uppdatera `STEPS` till 7 steg med ikoner: `FileSearch`, `BrainCircuit`, `Globe2`, `Inbox`, `ScanSearch`, `Sparkles`, `Presentation` (lucide-react).
-- Varje stegkort visar: nummer (01–07), ikon, **rubrik** (`text-base font-semibold`), **kort beskrivning** (`text-sm text-muted-foreground`, max ~2 rader).
-- Större layout: noder `w-44` (desktop), ikon-cirkel `h-14 w-14`, tydligare kontrast (`bg-card border border-border`, accent-ring på ikon).
-- Desktop: `grid grid-cols-7` med tunna animerade konnektorer mellan korten (samma `connector-grow`-keyframe). Vid behov wrap till 2 rader på medium skärm via `lg:grid-cols-7 md:grid-cols-4 grid-cols-1`.
-- Mobil: vertikal stack, full bredd, vertikala konnektorer.
-- Animation: behåll `slide-in-left` + `connector-grow` med staggered delay (BASE 600ms, STEP 140ms), `motion-safe:` prefix, körs en gång vid mount.
+- Desktop (`lg:flex`): byt till CSS-grid med lika kolumner så alla steg är identiskt breda.
+  - Byt `<ol className="hidden lg:flex items-stretch">` → `<ol className="hidden lg:grid grid-cols-[repeat(7,minmax(0,1fr))] items-stretch">`.
+  - Ta bort `<li>`-konnektor-uppdelningen. Varje `<li>` är bara en stegruta (`<StepCard />`), full bredd i sin grid-kolumn, så alla rutor blir exakt lika stora.
+  - Konnektorerna mellan korten ersätts av en tunn horisontell linje (`::before` på alla `<li>` utom det första) som ligger absolut i toppen av kortet på ikonhöjd. Linjen animeras med samma `connector-grow` keyframe via inline-stil `animationDelay`.
+  - Alternativt enklare: rendera konnektorn som ett absolut positionerat element inuti `<li>` (vänstra kanten, kort vågrät linje, justerad så den landar mellan kortikonerna). Behåller kolumnerna exakt lika.
+- StepCard: lägg till `w-full h-full` och `min-h-[12rem]` så alla kort får samma höjd även om beskrivningarna är olika långa.
+- Tablet-grid (`md:grid lg:hidden`): byt till `grid-cols-2 lg:grid-cols-4 gap-4` med samma `h-full` på korten så de blir lika stora; varje `<li>` får `h-full`.
+- Mobil: oförändrad layout, men `StepCard` får `w-full`.
 
-### `tailwind.config.ts`
-- Inga nya keyframes behövs – `slide-in-left` och `connector-grow` finns redan.
+### Vad som INTE ändras
+- Animationstiming, ikoner, copy/översättningar, färger, hero-bakgrund, stat-bar, övriga sektioner.
 
-## Vad som INTE ändras
-- Hero curtain-animation, rad 1/2/4, CTA-knappar, statbar.
-- Övriga sektioner (About, Services, Process, etc.).
-- Inga nya dependencies.
+## Resultat
+- Rad 1–3 + CTA centrerade på sidan.
+- Animerade flödet centrerat i en grid med 7 exakt lika breda och lika höga rutor på desktop, 2/4 kolumner på tablet, stack på mobil.

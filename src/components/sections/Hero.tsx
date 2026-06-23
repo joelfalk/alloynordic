@@ -37,10 +37,10 @@ const Hero = () => {
       </div>
 
       <div className="container relative z-10 px-4 pt-24 pb-32">
-        <div className="max-w-4xl">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Company Name */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none">
-            <span className="flex items-center gap-0">
+            <span className="flex items-center justify-center gap-0">
               <span>ALL</span>
               <img
                 src={alloyIcon}
@@ -55,13 +55,13 @@ const Hero = () => {
           {/* Banner — curtain reveal (single continuous block) */}
           <div className="mt-8 overflow-hidden">
             <div className="will-change-transform motion-safe:animate-curtain-down">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl mx-auto">
                 {t("hero.banner.lead")}
               </p>
-              <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl">
+              <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl mx-auto">
                 {t("hero.banner.bold1")}
               </p>
-              <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl">
+              <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl mx-auto">
                 {t("hero.banner.bold2")}
               </p>
             </div>
@@ -69,13 +69,13 @@ const Hero = () => {
         </div>
 
         {/* Processflöde — ersätter brödtexten */}
-        <div className="max-w-6xl mt-12">
+        <div className="max-w-6xl mx-auto mt-12">
           <ProcessFlow />
         </div>
 
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto">
           {/* CTAs */}
-          <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
             <Button
               asChild
               size="lg"
