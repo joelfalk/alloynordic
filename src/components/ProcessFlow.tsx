@@ -29,7 +29,7 @@ const StepCard = ({ step, delay }: { step: Step; delay: number }) => {
   const { t } = useLanguage();
   return (
     <div
-      className="group relative flex h-full w-full min-h-[16rem] flex-col gap-3 border border-white/15 bg-white/5 backdrop-blur-sm p-6 motion-safe:opacity-0 motion-safe:animate-slide-in-left transition-colors hover:border-accent/60 hover:bg-white/[0.08]"
+      className="group relative flex h-full w-full min-h-[9rem] flex-col gap-3 overflow-hidden border border-white/15 bg-white/5 backdrop-blur-sm p-6 motion-safe:opacity-0 motion-safe:animate-slide-in-left transition-colors hover:border-accent/60 hover:bg-white/[0.08]"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-center justify-between">
@@ -38,12 +38,14 @@ const StepCard = ({ step, delay }: { step: Step; delay: number }) => {
           <step.Icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
         </span>
       </div>
-      <h3 className="text-base md:text-lg font-semibold text-white leading-tight break-words">
+      <h3 className="text-base md:text-lg font-semibold text-white leading-tight whitespace-normal md:whitespace-nowrap">
         {t(`${step.key}.title`)}
       </h3>
-      <p className="text-sm text-white/70 leading-relaxed break-words">
-        {t(`${step.key}.desc`)}
-      </p>
+      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
+        <p className="overflow-hidden text-sm text-white/70 leading-relaxed">
+          {t(`${step.key}.desc`)}
+        </p>
+      </div>
     </div>
   );
 };
@@ -70,24 +72,13 @@ const Connector = ({ delay, vertical = false }: { delay: number; vertical?: bool
 const ProcessFlow = () => {
   return (
     <div aria-label="AI-driven RFQ process">
-      {/* XL desktop: 7 lika stora kort i en rad med animerade konnektorer */}
-      <ol className="hidden xl:grid grid-cols-7 gap-3 items-stretch">
-        {STEPS.map((step, i) => {
-          const delay = BASE_DELAY + i * STEP_STEP;
-          return (
-            <li key={step.num} className="relative h-full">
-              {i > 0 && (
-                <div className="pointer-events-none absolute top-11 -left-3 w-3 h-px bg-white/15 overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-accent origin-left motion-safe:scale-x-0 motion-safe:animate-connector-grow"
-                    style={{ animationDelay: `${delay + 100}ms` }}
-                  />
-                </div>
-              )}
-              <StepCard step={step} delay={delay} />
-            </li>
-          );
-        })}
+      {/* XL desktop: 4-kolumn (4+3) – bredare kort för rubriker utan radbryt */}
+      <ol className="hidden xl:grid grid-cols-4 gap-4 items-stretch">
+        {STEPS.map((step, i) => (
+          <li key={step.num} className="h-full">
+            <StepCard step={step} delay={BASE_DELAY + i * STEP_STEP} />
+          </li>
+        ))}
       </ol>
 
       {/* LG desktop: 4 + 3 (bredare rutor) */}
