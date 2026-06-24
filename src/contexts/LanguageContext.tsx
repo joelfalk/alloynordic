@@ -182,7 +182,7 @@ const translations = {
     // Hero
     "hero.tagline": "Quality without compromise",
     "hero.banner.lead": "AI-Driven RFQ Automation for Global Manufacturing",
-    "hero.banner.bold1": "Automate quotations. Access global suppliers. Make smarter sourcing decisions.",
+    "hero.banner.bold1": "We automate the RFQ process and open the door to a global network of qualified suppliers.",
     "hero.banner.body": "We combine sourcing expertise with proprietary AI technology that automates the entire RFQ workflow—from supplier identification and qualification to quote collection, analysis, and benchmarking. The result is faster sourcing cycles, reduced administrative workload, and more competitive supplier solutions worldwide.",
     "hero.banner.bold2": "Automated RFQs. Global supplier access. Smarter procurement decisions.",
     "hero.subtitle": "Your partner for metal parts since 1989",
