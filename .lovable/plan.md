@@ -1,37 +1,32 @@
 ## Mål
-Gör ProcessFlow minimalistisk: visa endast nummer + ikon + rubrik på varje kort. Beskrivningen visas som en utfällbar "gardin" vid hover. Rutorna görs bredare så rubriker aldrig radbryter.
+Få ProcessFlow att kännas som en sammanhängande process: 7 kort på **en rad** med en horisontell linje som löper genom alla kort (animerad accent), mindre rubriktext, behåll hover-gardin för beskrivning.
 
-## Ändringar
+## Ändringar – `src/components/ProcessFlow.tsx`
 
-**`src/components/ProcessFlow.tsx`**
+1. **Tillbaka till 7-kolumn på XL**
+   - `hidden xl:grid grid-cols-4` → `hidden xl:grid grid-cols-7 gap-0 items-stretch` (gap 0 så linjen blir obruten).
+   - LG (1024–1280px): behåll `grid-cols-4` (för smalt för 7 i rad).
 
-1. **StepCard – minimalistisk look**
-   - Ta bort den alltid synliga `<p>`-beskrivningen.
-   - Behåll: nummer (01–07), ikon, rubrik.
-   - Minska höjd: `min-h-[16rem]` → `min-h-[9rem]` (kompakt, luftigt).
-   - Rubrik: `whitespace-nowrap` så den aldrig radbryts (ta bort `break-words`).
-   - Lägg till `group` + `overflow-hidden` på korten.
-   - Lägg till en hover-gardin under rubriken:
-     ```
-     <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
-       <p className="overflow-hidden text-sm text-white/70 leading-relaxed">
-         {t(`${step.key}.desc`)}
-       </p>
-     </div>
-     ```
-   - Subtil hover-feedback behålls (border/bg).
+2. **Genomgående processlinje**
+   - Lägg en horisontell linje över hela 7-kort-raden, positionerad i höjd med ikonernas mitt (`top-12` ≈ mitten av ikon-cirkeln med p-6 + 12px ikoncenter).
+   - Implementation: wrappa `<ol>` i en `relative`-container; lägg en absolut `<div>` på `top-[3.25rem] left-0 right-0 h-px bg-white/15` med en inre `bg-accent` som animeras med `scale-x-0 → 1` (`origin-left`, `animate-connector-grow`, delay ~`BASE_DELAY`).
+   - Ikon-cirkeln får `bg-background` (eller `bg-[hsl(var(--background))]`) så linjen "bryts" visuellt bakom cirkeln och cirkeln sitter "på" linjen som processnoder. Använd `relative z-10` på cirkeln.
 
-2. **Bredare rutor – layoutjustering**
-   - XL-raden (7 i bredd) gör att rubrikerna måste radbryta vid de längsta texterna. Byt till **2 rader med större kort** så bredden räcker till för rubrik på en rad:
-     - Ändra `hidden xl:grid grid-cols-7` → `hidden xl:grid grid-cols-4` (4+3-layout, sista kortet kan center-justeras eller lämnas vänster).
-     - Alternativ: behåll 7-kolumn men öka container till full bredd. Vi väljer 4-kolumn för luftigare minimalism.
-   - LG-raden behålls som `grid-cols-4`.
-   - Tablet/mobil: oförändrat (rubrik på en rad funkar redan i smalare kort om vi tar bort beskrivningen, men `whitespace-nowrap` med truncate-skydd: använd `whitespace-normal` på `md:hidden` mobil för säkerhets skull). Vi sätter `whitespace-nowrap` endast från `md:` och uppåt.
+3. **Korten på XL**
+   - Ta bort kortets border + bakgrund i XL-läget så det ser ut som noder på en linje, inte rutor. Variant via prop `variant: "node" | "card"`:
+     - `node`: ingen border/bg, bara padding + ikon + rubrik + hover-gardin. Hover ändrar ikonens ring till accent.
+   - LG/tablet/mobil fortsätter använda `card`-varianten (med border/bg) som idag.
 
-3. **Konnektorer (XL)**
-   - Eftersom XL nu är 4-kolumn försvinner den långa horisontella konnektor-raden. Vi tar bort den absolut-positionerade connectorn i XL-grenen (eller behåller den endast inom raderna). Enklast: ta bort connectorn i XL-grenen för minimalism.
+4. **Mindre rubriker**
+   - Rubrik: `text-base md:text-lg` → `text-xs md:text-sm font-medium tracking-wide`.
+   - Behåll `whitespace-nowrap` på md+ så de står på en rad.
+
+5. **Hover-gardin**
+   - Oförändrad (grid-rows-trick), men `text-xs` istället för `text-sm` för konsekvent skala.
+
+6. **Konnektor-komponenten/mobil**
+   - Mobil oförändrad (vertikal layout med Connector).
 
 ## Resultat
-- Lugnt, minimalistiskt rutnät: nummer, ikon, rubrik.
-- Hover på en ruta fäller ut beskrivningen mjukt (CSS grid-rows-trick, inga JS-state).
-- Bredare kort (4 kolumner istället för 7) gör att alla rubriker får plats utan radbryt.
+- XL: 7 ikon-noder i en rad förbundna av en animerad accentlinje, små rubriker under varje nod, beskrivning fälls ut vid hover.
+- LG och nedåt: kortbaserad fallback.
