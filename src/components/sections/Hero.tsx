@@ -61,9 +61,6 @@ const Hero = () => {
               <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl mx-auto">
                 {t("hero.banner.bold1")}
               </p>
-              <p className="mt-4 text-base md:text-lg font-bold text-accent max-w-2xl mx-auto">
-                {t("hero.banner.bold2")}
-              </p>
             </div>
           </div>
         </div>
