@@ -1,6 +1,6 @@
-Update `hero.banner.bold1` in the English translations (`src/contexts/LanguageContext.tsx`) so it actually mirrors the Swedish sentence:
+Update `hero.banner.lead` in the English translations (`src/contexts/LanguageContext.tsx`):
 
-- SV: "Vi automatiserar offertprocessen och öppnar dörren till ett globalt nätverk av kvalificerade leverantörer."
-- EN (new): "We automate the RFQ process and open the door to a global network of qualified suppliers."
+- From: "AI-Driven RFQ Automation for Global Manufacturing"
+- To: "The Future of Sourcing Starts with AI"
 
-No other strings or files change.
+No other changes.
