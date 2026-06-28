@@ -42,12 +42,12 @@ const translations = {
     // About
     "about.kicker": "Om oss",
     "about.title": "Om Alloy Nordic",
-    "about.p1": "Alloy Nordic är din pålitliga partner för högkvalitativa industridetaljer från hela världen. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer, erbjuder vi skräddarsydda lösningar för svenska företag.",
+    "about.p1": "Alloy Nordic är din partner för högkvalitativa industridetaljer från hela världen. Med år av erfarenhet och ett omfattande nätverk av noggrant utvalda leverantörer, erbjuder vi skräddarsydda lösningar för svenska företag.",
     "about.p2": "Vi förstår komplexiteten i internationell handel och tar hand om hela processen – från leverantörsval och kvalitetskontroll till logistik och leverans. Vårt mål är att göra det enkelt och tryggt för dig att sourca detaljer med samma höga kvalitetskrav som du ställer på inhemsk produktion.",
     "about.p3":
       "Med Alloy Nordic som din partner får du en svensk kontaktperson som talar ditt språk och förstår dina behov, samtidigt som du drar nytta av konkurrenskraftiga priser och tillförlitlig kvalitet.",
     "about.global.title": "Globalt Nätverk",
-    "about.global.desc": "Etablerade relationer med pålitliga leverantörer världen över",
+    "about.global.desc": "Etablerade relationer med leverantörer världen över",
     "about.partner.title": "Svensk Partner",
     "about.partner.desc": "En lokal kontaktpunkt som förstår dina behov och krav",
     "about.expertise.title": "Branschexpertis",
@@ -212,13 +212,13 @@ const translations = {
     "about.kicker": "About",
     "about.title": "About Alloy Nordic",
     "about.p1":
-      "Alloy Nordic is your reliable partner for high-quality metal parts from around the world. With years of experience and an extensive network of carefully selected suppliers, we offer tailored solutions for Swedish companies.",
+      "Alloy Nordic is your partner for high-quality metal parts from around the world. With years of experience and an extensive network of carefully selected suppliers, we offer tailored solutions for Swedish companies.",
     "about.p2":
       "We understand the complexity of international trade and take care of the entire process – from supplier selection and quality control to logistics and delivery. Our goal is to make it easy and safe for you to source metal parts with the same high quality requirements as domestic production.",
     "about.p3":
       "With Alloy Nordic as your partner, you get a Swedish contact person who speaks your language and understands your needs, while benefiting from competitive prices and reliable quality.",
     "about.global.title": "Global Network",
-    "about.global.desc": "Established relationships with reliable suppliers worldwide",
+    "about.global.desc": "Established relationships with suppliers worldwide",
     "about.partner.title": "Swedish Partner",
     "about.partner.desc": "A local contact point that understands your needs and requirements",
     "about.expertise.title": "Industry Expertise",

@@ -23,7 +23,6 @@ const Navbar = () => {
   const links = [
     { href: onHome ? "#om-oss" : "/#om-oss", label: t("footer.about") },
     { href: onHome ? "#tjanster" : "/#tjanster", label: t("footer.services") },
-    { href: onHome ? "#process" : "/#process", label: t("footer.process") },
     { href: "/tillverkningsprocesser", label: t("footer.manufacturing"), router: true },
   ];
 

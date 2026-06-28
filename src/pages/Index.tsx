@@ -3,11 +3,10 @@ import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Hero from "@/components/sections/Hero";
 import SupplierFlow from "@/components/sections/SupplierFlow";
+import ProcessFlowSection from "@/components/sections/ProcessFlowSection";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Materials from "@/components/sections/Materials";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import Process from "@/components/sections/Process";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import Navbar from "@/components/Navbar";
@@ -48,11 +47,10 @@ const Index = () => {
       <Navbar />
       <Hero />
       <SupplierFlow />
-      <About />
+      <ProcessFlowSection />
       <Services />
       <Materials />
-      <WhyChooseUs />
-      <Process />
+      <About />
       <Contact />
       <Footer />
     </main>

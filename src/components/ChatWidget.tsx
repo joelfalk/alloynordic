@@ -21,10 +21,9 @@ const ChatWidget = () => {
     language === "sv"
       ? {
           title: "Fråga Alloy Nordic",
-          subtitle: "AI-assistent",
           placeholder: "Skriv ett meddelande...",
           welcome:
-            "Hej! Jag är Alloy Nordics AI-assistent. Hur kan jag hjälpa dig med metalldelar, material eller tillverkning?",
+            "Hej! Hur kan jag hjälpa dig med metalldelar, material eller tillverkning?",
           open: "Öppna chatt",
           close: "Stäng chatt",
           send: "Skicka",
@@ -32,10 +31,9 @@ const ChatWidget = () => {
         }
       : {
           title: "Ask Alloy Nordic",
-          subtitle: "AI assistant",
           placeholder: "Type a message...",
           welcome:
-            "Hi! I'm Alloy Nordic's AI assistant. How can I help you with metal parts, materials or manufacturing?",
+            "Hi! How can I help you with metal parts, materials or manufacturing?",
           open: "Open chat",
           close: "Close chat",
           send: "Send",
@@ -159,7 +157,6 @@ const ChatWidget = () => {
           <div className="flex items-center justify-between border-b border-border bg-primary px-4 py-3 text-primary-foreground">
             <div>
               <div className="text-sm font-semibold">{labels.title}</div>
-              <div className="text-xs opacity-75">{labels.subtitle}</div>
             </div>
             <button
               onClick={() => setOpen(false)}

@@ -36,9 +36,6 @@ const Footer = () => {
                 <a href="#tjanster" className="block text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   {t("footer.services")}
                 </a>
-                <a href="#process" className="block text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  {t("footer.process")}
-                </a>
                 <Link to="/tillverkningsprocesser" className="block text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   {t("footer.manufacturing")}
                 </Link>

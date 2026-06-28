@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import alloyIcon from "@/assets/alloy-o-icon.png";
 import heroBg from "@/assets/hero-options/raw-materials.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ProcessFlow from "@/components/ProcessFlow";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -63,11 +62,6 @@ const Hero = () => {
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Processflöde — ersätter brödtexten */}
-        <div className="max-w-7xl mx-auto mt-12">
-          <ProcessFlow />
         </div>
 
         <div className="max-w-4xl mx-auto">
