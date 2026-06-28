@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Hero from "@/components/sections/Hero";
+import SupplierFlow from "@/components/sections/SupplierFlow";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Materials from "@/components/sections/Materials";
@@ -46,6 +47,7 @@ const Index = () => {
       </Helmet>
       <Navbar />
       <Hero />
+      <SupplierFlow />
       <About />
       <Services />
       <Materials />
