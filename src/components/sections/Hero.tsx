@@ -57,9 +57,6 @@ const Hero = () => {
               <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl mx-auto">
                 {t("hero.banner.lead")}
               </p>
-              <p className="mt-5 text-base md:text-lg font-bold text-white max-w-2xl mx-auto">
-                {t("hero.banner.bold1")}
-              </p>
             </div>
           </div>
         </div>

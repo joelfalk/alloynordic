@@ -195,6 +195,40 @@ const CONFIG = {
   },
 };
 
+// -- localized copy (switches with the site language toggle) ----------------
+const STRINGS = {
+  sv: {
+    eyebrow1: 'UTAN OSS', eyebrow2: 'MED ALLOY NORDIC',
+    head1: ['Din räckvidd slutar', 'vid dina kontakter.'],
+    head2: ['Räckvidd', 'utan gränser.'],
+    cap1A: 'Begränsad till dina kontakter.',
+    cap2A: 'Fler leverantörer. Hela världen. En kontakt.',
+    cap1B: 'Du når bara dem du redan känner.',
+    cap2B: 'Från lokalt till globalt — i ett enda steg.',
+    colLabels: ['MÄKLARE', 'DISTRIBUTÖRER', 'LEVERANTÖRER', 'MISSADE LEVERANTÖRER'],
+    regions: ['NORDEN', 'NORDAMERIKA', 'ASIEN', 'EUROPA', 'MELLANÖSTERN'],
+    rings: ['LOKALT', 'NORDEN', 'EUROPA', 'GLOBALT'],
+    du: 'DU', us: 'ALLOY NORDIC', reach: 'RÄCKVIDD',
+    suppliersIn: (n) => `leverantörer i ${n} länder`,
+    legendTrad: 'Traditionell leverantör', legendAi: 'AI-föreslagen leverantör',
+  },
+  en: {
+    eyebrow1: 'WITHOUT US', eyebrow2: 'WITH ALLOY NORDIC',
+    head1: ['Your reach ends', 'at your contacts.'],
+    head2: ['Reach', 'without limits.'],
+    cap1A: 'Limited to your contacts.',
+    cap2A: 'More suppliers. The whole world. One contact.',
+    cap1B: 'You only reach those you already know.',
+    cap2B: 'From local to global — in a single step.',
+    colLabels: ['BROKERS', 'DISTRIBUTORS', 'SUPPLIERS', 'MISSED SUPPLIERS'],
+    regions: ['THE NORDICS', 'NORTH AMERICA', 'ASIA', 'EUROPE', 'MIDDLE EAST'],
+    rings: ['LOCAL', 'THE NORDICS', 'EUROPE', 'GLOBAL'],
+    du: 'YOU', us: 'ALLOY NORDIC', reach: 'REACH',
+    suppliersIn: (n) => `suppliers in ${n} countries`,
+    legendTrad: 'Traditional supplier', legendAi: 'AI-suggested supplier',
+  },
+};
+
 // -- primitives -------------------------------------------------------------
 function Edge({ x1, y1, x2, y2, stroke = LINE, width = 1, opacity = 1 }) {
   return React.createElement('line', { x1, y1, x2, y2, stroke, strokeWidth: width, strokeLinecap: 'round', opacity });
@@ -209,7 +243,7 @@ function Node({ x, y, r, fill, opacity = 1, halo = 0, haloColor }) {
 // ---------------------------------------------------------------------------
 //  SCENE
 // ---------------------------------------------------------------------------
-function Scene({ dir, accent, total, countries, logoSrc }) {
+function Scene({ dir, accent, total, countries, logoSrc, lang }) {
   const t = useTime();
   const ORANGE = accent || '#F74C16';
   const TOTAL = +total || 2412;
@@ -217,6 +251,9 @@ function Scene({ dir, accent, total, countries, logoSrc }) {
   const LOGO = logoSrc || LOGO_DEFAULT;
   const cfg = CONFIG[dir];
   const { du, hub } = cfg;
+  const L = STRINGS[lang] || STRINGS.sv;
+  const cap1 = dir === 'A' ? L.cap1A : L.cap1B;
+  const cap2 = dir === 'A' ? L.cap2A : L.cap2B;
 
   const fadeIn = ph(t, 0, 0.7, Easing.easeOutCubic);
   const fadeOut = 1 - ph(t, T.dur - 0.7, T.dur, Easing.easeInCubic);
@@ -469,14 +506,14 @@ function Scene({ dir, accent, total, countries, logoSrc }) {
   );
 
   // DU label
-  lbl('dulab', du.x, du.y + 26, 'DU', { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: INK, transform: 'translateX(-50%)', opacity: ph(t, T.duEnter + 0.2, T.duEnter + 0.7) });
+  lbl('dulab', du.x, du.y + 26, L.du, { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: INK, transform: 'translateX(-50%)', opacity: ph(t, T.duEnter + 0.2, T.duEnter + 0.7) });
   // ALLOY NORDIC label
-  if (hubScale > 0.3) lbl('alab', hub.x, hub.y + 76, 'ALLOY NORDIC', { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: INK, opacity: ph(t, T.colE - 0.4, T.colE + 0.3), transform: 'translateX(-50%)' });
+  if (hubScale > 0.3) lbl('alab', hub.x, hub.y + 76, L.us, { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: INK, opacity: ph(t, T.colE - 0.4, T.colE + 0.3), transform: 'translateX(-50%)' });
 
   // tangle column labels (A only)
   if (dir === 'A' && cfg.colLabels && t < T.colS + 0.3) {
     const o = ph(t, T.buildS, T.buildS + 0.6) * (1 - ph(t, T.colS - 0.3, T.colS + 0.3));
-    cfg.colLabels.forEach((c, i) => lbl('cl' + i, c.x, 300, c.t, { fontFamily: MONO, fontSize: 14, letterSpacing: '0.1em', color: '#9A988F', transform: 'translateX(-50%)', opacity: o, whiteSpace: 'nowrap' }));
+    cfg.colLabels.forEach((c, i) => lbl('cl' + i, c.x, 300, L.colLabels[i], { fontFamily: MONO, fontSize: 14, letterSpacing: '0.1em', color: '#9A988F', transform: 'translateX(-50%)', opacity: o, whiteSpace: 'nowrap' }));
   }
 
   // bloom region / ring labels
@@ -484,12 +521,12 @@ function Scene({ dir, accent, total, countries, logoSrc }) {
     if (dir === 'A') {
       REGIONS_A.forEach((reg, ri) => {
         const o = ph(t, networkS + ri * 0.26, networkS + ri * 0.26 + 0.6);
-        lbl('rg' + ri, reg.x, reg.y - 120, reg.name, { fontFamily: MONO, fontSize: 13, letterSpacing: '0.12em', color: '#9A988F', transform: 'translateX(-50%)', opacity: o * 0.9, whiteSpace: 'nowrap' });
+        lbl('rg' + ri, reg.x, reg.y - 120, L.regions[ri], { fontFamily: MONO, fontSize: 13, letterSpacing: '0.12em', color: '#9A988F', transform: 'translateX(-50%)', opacity: o * 0.9, whiteSpace: 'nowrap' });
       });
     } else {
       RINGS_B.forEach((ring, ri) => {
         const o = ph(t, T.bloomS + ri * 0.5, T.bloomS + ri * 0.5 + 0.7);
-        lbl('rgb' + ri, cfg.center.x, cfg.center.y - ring.r * 0.82 - 22, ring.name, { fontFamily: MONO, fontSize: 13, letterSpacing: '0.14em', color: ri === 3 ? ORANGE : '#9A988F', transform: 'translateX(-50%)', opacity: o * 0.95 });
+        lbl('rgb' + ri, cfg.center.x, cfg.center.y - ring.r * 0.82 - 22, L.rings[ri], { fontFamily: MONO, fontSize: 13, letterSpacing: '0.14em', color: ri === 3 ? ORANGE : '#9A988F', transform: 'translateX(-50%)', opacity: o * 0.95 });
       });
     }
   }
@@ -500,14 +537,14 @@ function Scene({ dir, accent, total, countries, logoSrc }) {
   const TX = 140;
   // eyebrow
   overlays.push(React.createElement('div', { key: 'eb', style: { position: 'absolute', left: TX, top: 120, height: 22 } }, [
-    React.createElement('div', { key: 1, style: { position: 'absolute', whiteSpace: 'nowrap', fontFamily: MONO, fontSize: 16, letterSpacing: '0.22em', color: '#8C8A82', opacity: eyebrowO1, transform: `translateY(${(1 - eyebrowO1) * -8}px)` } }, cfg.eyebrow1),
-    React.createElement('div', { key: 2, style: { position: 'absolute', whiteSpace: 'nowrap', fontFamily: MONO, fontSize: 16, letterSpacing: '0.22em', color: ORANGE, opacity: eyebrowO2, transform: `translateY(${(1 - eyebrowO2) * 8}px)` } }, cfg.eyebrow2),
+    React.createElement('div', { key: 1, style: { position: 'absolute', whiteSpace: 'nowrap', fontFamily: MONO, fontSize: 16, letterSpacing: '0.22em', color: '#8C8A82', opacity: eyebrowO1, transform: `translateY(${(1 - eyebrowO1) * -8}px)` } }, L.eyebrow1),
+    React.createElement('div', { key: 2, style: { position: 'absolute', whiteSpace: 'nowrap', fontFamily: MONO, fontSize: 16, letterSpacing: '0.22em', color: ORANGE, opacity: eyebrowO2, transform: `translateY(${(1 - eyebrowO2) * 8}px)` } }, L.eyebrow2),
   ]));
   // headline (two stacked variants cross-fading)
   const headStyle = { position: 'absolute', left: 0, top: 0, fontFamily: DISP, fontSize: 62, fontWeight: 600, lineHeight: 1.04, letterSpacing: '-0.02em', color: INK, whiteSpace: 'nowrap' };
   overlays.push(React.createElement('div', { key: 'hd', style: { position: 'absolute', left: TX, top: 156, width: 900, height: 170 } }, [
-    React.createElement('div', { key: 1, style: { ...headStyle, opacity: 1 - swap, transform: `translateY(${swap * -14}px)` } }, cfg.head1.map((l, i) => React.createElement('div', { key: i }, l))),
-    React.createElement('div', { key: 2, style: { ...headStyle, opacity: swap, transform: `translateY(${(1 - swap) * 18}px)` } }, cfg.head2.map((l, i) => React.createElement('div', { key: i }, l))),
+    React.createElement('div', { key: 1, style: { ...headStyle, opacity: 1 - swap, transform: `translateY(${swap * -14}px)` } }, L.head1.map((l, i) => React.createElement('div', { key: i }, l))),
+    React.createElement('div', { key: 2, style: { ...headStyle, opacity: swap, transform: `translateY(${(1 - swap) * 18}px)` } }, L.head2.map((l, i) => React.createElement('div', { key: i }, l))),
   ]));
 
   // ---------- bottom-left: caption + counter ----------
@@ -516,28 +553,28 @@ function Scene({ dir, accent, total, countries, logoSrc }) {
   const BY = 902;
   // act 1 reach readout
   overlays.push(React.createElement('div', { key: 'cap1', style: { position: 'absolute', left: TX, top: BY, opacity: cap1O } }, [
-    React.createElement('div', { key: 'l', style: { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: '#8C8A82' } }, 'RÄCKVIDD'),
+    React.createElement('div', { key: 'l', style: { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: '#8C8A82' } }, L.reach),
     React.createElement('div', { key: 'v', style: { fontFamily: DISP, fontSize: 60, fontWeight: 600, color: INK, letterSpacing: '-0.02em', lineHeight: 1.1, marginTop: 4 } }, [
       React.createElement('span', { key: 1 }, String(REACHED)),
       React.createElement('span', { key: 2, style: { color: GRAY } }, ' / ' + fmt(TOTAL)),
     ]),
-    React.createElement('div', { key: 'c', style: { fontFamily: DISP, fontSize: 22, color: '#6E6C64', marginTop: 6, letterSpacing: '-0.01em' } }, cfg.cap1),
+    React.createElement('div', { key: 'c', style: { fontFamily: DISP, fontSize: 22, color: '#6E6C64', marginTop: 6, letterSpacing: '-0.01em' } }, cap1),
   ]));
   // act 3 counter racing
   const bloomCount = lerp(REACHED, TOTAL, ph(t, networkS, T.bloomE - 0.4, Easing.easeOutCubic));
   const bloomCountries = Math.round(lerp(1, COUNTRIES, ph(t, networkS + 0.3, T.bloomE - 0.6, Easing.easeOutCubic)));
   overlays.push(React.createElement('div', { key: 'cap2', style: { position: 'absolute', left: TX, top: BY - 6, opacity: cap2O } }, [
-    React.createElement('div', { key: 'n', style: { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: ORANGE } }, 'RÄCKVIDD'),
+    React.createElement('div', { key: 'n', style: { fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: ORANGE } }, L.reach),
     React.createElement('div', { key: 'v', style: { fontFamily: DISP, fontSize: 76, fontWeight: 700, color: INK, letterSpacing: '-0.03em', lineHeight: 1.0, marginTop: 4, fontVariantNumeric: 'tabular-nums' } }, fmt(bloomCount) + '+'),
-    React.createElement('div', { key: 'u', style: { fontFamily: DISP, fontSize: 22, color: '#6E6C64', marginTop: 8, letterSpacing: '-0.01em' } }, `leverantörer i ${bloomCountries} länder`),
-    React.createElement('div', { key: 'c', style: { fontFamily: DISP, fontSize: 22, color: INK, marginTop: 14, letterSpacing: '-0.01em', fontWeight: 500 } }, cfg.cap2),
+    React.createElement('div', { key: 'u', style: { fontFamily: DISP, fontSize: 22, color: '#6E6C64', marginTop: 8, letterSpacing: '-0.01em' } }, L.suppliersIn(bloomCountries)),
+    React.createElement('div', { key: 'c', style: { fontFamily: DISP, fontSize: 22, color: INK, marginTop: 14, letterSpacing: '-0.01em', fontWeight: 500 } }, cap2),
   ]));
 
   // ---------- legend (bloom) ----------
   const legO = ph(t, networkS + 1.4, networkS + 2.0);
   overlays.push(React.createElement('div', { key: 'leg', style: { position: 'absolute', right: 80, bottom: 56, display: 'flex', gap: 30, opacity: legO, fontFamily: MONO, fontSize: 14, letterSpacing: '0.04em', color: '#6E6C64', alignItems: 'center' } }, [
-    React.createElement('div', { key: 1, style: { display: 'flex', gap: 10, alignItems: 'center' } }, [React.createElement('span', { key: 'd', style: { width: 12, height: 12, borderRadius: 7, background: GRAY, display: 'inline-block' } }), 'Traditionell leverantör']),
-    React.createElement('div', { key: 2, style: { display: 'flex', gap: 10, alignItems: 'center' } }, [React.createElement('span', { key: 'd', style: { width: 12, height: 12, borderRadius: 7, background: ORANGE, display: 'inline-block' } }), 'AI-föreslagen leverantör']),
+    React.createElement('div', { key: 1, style: { display: 'flex', gap: 10, alignItems: 'center' } }, [React.createElement('span', { key: 'd', style: { width: 12, height: 12, borderRadius: 7, background: GRAY, display: 'inline-block' } }), L.legendTrad]),
+    React.createElement('div', { key: 2, style: { display: 'flex', gap: 10, alignItems: 'center' } }, [React.createElement('span', { key: 'd', style: { width: 12, height: 12, borderRadius: 7, background: ORANGE, display: 'inline-block' } }), L.legendAi]),
   ]));
 
   return React.createElement('div', { style: { position: 'absolute', inset: 0, opacity: globalOpacity } }, [svg, hubEl, ...overlays]);
@@ -546,12 +583,12 @@ function Scene({ dir, accent, total, countries, logoSrc }) {
 // -- exported entrypoint ----------------------------------------------------
 // Varldskarta-locked hero. Pass chrome to show the scrubber, accent/total/countries
 // to tweak the data/brand, logoSrc to point at your imported asset.
-function AlloyFlow({ direction = 'A', accent, total, countries, logoSrc, chrome = false }) {
+function AlloyFlow({ direction = 'A', accent, total, countries, logoSrc, chrome = false, lang = 'sv' }) {
   const dir = direction === 'B' ? 'B' : 'A';
   return React.createElement(Stage, {
     width: W, height: H, duration: T.dur, background: BG,
     loop: true, autoplay: true, persist: false, chrome,
-  }, React.createElement(Scene, { dir, accent, total, countries, logoSrc }));
+  }, React.createElement(Scene, { dir, accent, total, countries, logoSrc, lang }));
 }
 
 export default AlloyFlow;

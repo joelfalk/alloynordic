@@ -12,7 +12,7 @@ const translations = {
   sv: {
     // Hero
     "hero.tagline": "Kvalitet utan kompromiss",
-    "hero.banner.lead": "Framtidens sourcing börjar med AI",
+    "hero.banner.lead": "Din lokala tillverkare med en global närvaro",
     "hero.banner.bold1": "Vi automatiserar offertprocessen och öppnar dörren till ett globalt nätverk av kvalificerade leverantörer.",
     "hero.banner.body": "Genom att kombinera djup sourcingkompetens med egenutvecklade AI-verktyg effektiviserar vi hela processen – från förfrågan och leverantörsval till offertinsamling, analys och utvärdering. Det ger snabbare beslut, bättre leverantörsalternativ och mer konkurrenskraftiga priser.",
     "hero.banner.bold2": "AI-driven offertautomation. Global sourcing. Bättre affärer.",
@@ -72,7 +72,7 @@ const translations = {
     // Process
     "process.kicker": "Process",
     "process.title": "Vår Process",
-    "process.subtitle": "En strukturerad process som säkerställer kvalitet i varje steg",
+    "process.subtitle": "Framtidens sourcing börjar med AI - Vi automatiserar offertprocessen och öppnar dörren till ett globalt nätverk av kvalificerade leverantörer.",
     "process.step1.title": "Konsultation",
     "process.step1.desc": "Vi diskuterar dina behov, specifikationer och krav på detaljer",
     "process.step2.title": "Leverantörsmatchning",
@@ -181,7 +181,7 @@ const translations = {
   en: {
     // Hero
     "hero.tagline": "Quality without compromise",
-    "hero.banner.lead": "The Future of Sourcing Starts with AI",
+    "hero.banner.lead": "Your local manufacturer with a global presence",
     "hero.banner.bold1": "We automate the RFQ process and open the door to a global network of qualified suppliers.",
     "hero.banner.body": "We combine sourcing expertise with proprietary AI technology that automates the entire RFQ workflow—from supplier identification and qualification to quote collection, analysis, and benchmarking. The result is faster sourcing cycles, reduced administrative workload, and more competitive supplier solutions worldwide.",
     "hero.banner.bold2": "Automated RFQs. Global supplier access. Smarter procurement decisions.",
@@ -244,7 +244,7 @@ const translations = {
     // Process
     "process.kicker": "Process",
     "process.title": "Our Process",
-    "process.subtitle": "A structured process that ensures quality at every step",
+    "process.subtitle": "The future of sourcing starts with AI - We automate the RFQ process and open the door to a global network of qualified suppliers.",
     "process.step1.title": "Consultation",
     "process.step1.desc": "We discuss your needs, specifications, and requirements for metal parts",
     "process.step2.title": "Supplier Matching",

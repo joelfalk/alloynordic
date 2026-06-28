@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import alloyIcon from "@/assets/alloy-o-icon.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 import AlloyFlow from "@/components/alloy-flow/AlloyFlow.jsx";
 
 const SupplierFlow = () => {
+  const { language } = useLanguage();
   const ref = useRef<HTMLElement>(null);
   // Only run the rAF-driven animation while the section is on screen.
   const [inView, setInView] = useState(false);
@@ -19,11 +21,17 @@ const SupplierFlow = () => {
   }, []);
 
   return (
-    <section ref={ref} id="rackvidd" className="relative w-full bg-[#F1F0EC]">
+    <section ref={ref} id="rackvidd" className="relative w-full bg-[#F1F0EC] pb-16 md:pb-24">
       {/* 16:9 stage; the self-contained scene fills it via position:absolute */}
       <div className="relative w-full aspect-[16/9]">
         {inView && (
-          <AlloyFlow logoSrc={alloyIcon} accent="#F74C16" total={2412} countries={42} />
+          <AlloyFlow
+            logoSrc={alloyIcon}
+            accent="#F74C16"
+            total={2412}
+            countries={42}
+            lang={language}
+          />
         )}
       </div>
     </section>
