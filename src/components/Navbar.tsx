@@ -26,35 +26,23 @@ const Navbar = () => {
     { href: "/tillverkningsprocesser", label: t("footer.manufacturing"), router: true },
   ];
 
-  const solid = scrolled || !onHome || mobileOpen;
+  // On the home page the navbar stays hidden until the user scrolls
+  const hidden = onHome && !scrolled && !mobileOpen;
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        solid
-          ? "bg-background/85 backdrop-blur-md border-b border-border"
-          : "bg-transparent",
+        "bg-background/85 backdrop-blur-md border-b border-border",
+        hidden && "opacity-0 -translate-y-full invisible pointer-events-none",
       )}
     >
       <div className="container px-4">
         <div className="h-16 flex items-center justify-between gap-6">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <img
-              src={alloyIcon}
-              alt=""
-              className={cn(
-                "h-6 w-auto transition-all",
-                solid ? "" : "brightness-0 invert",
-              )}
-            />
-            <span
-              className={cn(
-                "font-bold tracking-tight text-base sm:text-lg",
-                solid ? "text-foreground" : "text-white",
-              )}
-            >
+            <img src={alloyIcon} alt="" className="h-6 w-auto" />
+            <span className="font-bold tracking-tight text-base sm:text-lg text-foreground">
               ALLOY NORDIC
             </span>
           </Link>
@@ -66,10 +54,7 @@ const Navbar = () => {
                 <Link
                   key={l.href}
                   to={l.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-accent",
-                    solid ? "text-foreground/80" : "text-white/90",
-                  )}
+                  className="text-sm font-medium transition-colors hover:text-accent text-foreground/80"
                 >
                   {l.label}
                 </Link>
@@ -77,10 +62,7 @@ const Navbar = () => {
                 <a
                   key={l.href}
                   href={l.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-accent",
-                    solid ? "text-foreground/80" : "text-white/90",
-                  )}
+                  className="text-sm font-medium transition-colors hover:text-accent text-foreground/80"
                 >
                   {l.label}
                 </a>
@@ -91,12 +73,7 @@ const Navbar = () => {
           {/* Right side */}
           <div className="flex items-center gap-3">
             {/* Lang switch */}
-            <div
-              className={cn(
-                "hidden sm:flex items-center gap-1 text-xs font-mono",
-                solid ? "text-foreground/60" : "text-white/70",
-              )}
-            >
+            <div className="hidden sm:flex items-center gap-1 text-xs font-mono text-foreground/60">
               <button
                 onClick={() => setLanguage("sv")}
                 className={cn(
@@ -130,10 +107,7 @@ const Navbar = () => {
 
             {/* Mobile hamburger */}
             <button
-              className={cn(
-                "lg:hidden p-2 -mr-2",
-                solid ? "text-foreground" : "text-white",
-              )}
+              className="lg:hidden p-2 -mr-2 text-foreground"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >

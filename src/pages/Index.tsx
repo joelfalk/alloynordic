@@ -45,8 +45,8 @@ const Index = () => {
         <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
       </Helmet>
       <Navbar />
-      <Hero />
       <SupplierFlow />
+      <Hero />
       <ProcessFlowSection />
       <Services />
       <Materials />
