@@ -17,6 +17,14 @@ interface ContactFormData {
   meddelande: string;
 }
 
+const escHtml = (s: string) =>
+  String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -38,23 +46,23 @@ const handler = async (req: Request): Promise<Response> => {
       <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
         <tr>
           <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f5f5f5;">Namn</td>
-          <td style="padding: 10px; border: 1px solid #ddd;">${formData.namn}</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${escHtml(formData.namn)}</td>
         </tr>
         <tr>
           <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f5f5f5;">E-post</td>
-          <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${formData.email}">${formData.email}</a></td>
+          <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${escHtml(formData.email)}">${escHtml(formData.email)}</a></td>
         </tr>
         <tr>
           <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f5f5f5;">Telefon</td>
-          <td style="padding: 10px; border: 1px solid #ddd;">${formData.telefon || "Ej angiven"}</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${formData.telefon ? escHtml(formData.telefon) : "Ej angiven"}</td>
         </tr>
         <tr>
           <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f5f5f5;">Företag</td>
-          <td style="padding: 10px; border: 1px solid #ddd;">${formData.foretag || "Ej angivet"}</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${formData.foretag ? escHtml(formData.foretag) : "Ej angivet"}</td>
         </tr>
         <tr>
           <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f5f5f5;">Meddelande</td>
-          <td style="padding: 10px; border: 1px solid #ddd; white-space: pre-wrap;">${formData.meddelande}</td>
+          <td style="padding: 10px; border: 1px solid #ddd; white-space: pre-wrap;">${escHtml(formData.meddelande)}</td>
         </tr>
       </table>
       <p style="margin-top: 20px; color: #666; font-size: 12px;">
@@ -84,7 +92,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in send-contact-email function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "Internal server error" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
