@@ -21,9 +21,10 @@ const SupplierFlow = () => {
   }, []);
 
   return (
-    <section ref={ref} id="rackvidd" className="relative w-full bg-[#F1F0EC] pb-16 md:pb-24">
-      {/* 16:9 stage; the self-contained scene fills it via position:absolute */}
-      <div className="relative w-full aspect-[16/9]">
+    <section ref={ref} id="rackvidd" className="relative w-full bg-[#F1F0EC]">
+      {/* Full-viewport stage; the 16:9 scene is contain-fit and centered by Stage,
+          and the surrounding space matches the scene's beige background */}
+      <div className="relative w-full h-svh">
         {inView && (
           <AlloyFlow
             logoSrc={alloyIcon}
