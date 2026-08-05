@@ -28,7 +28,9 @@ const LOGO_DEFAULT = './alloy-icon.png';
 const TOTAL = 2412, COUNTRIES = 42, REACHED = 3;
 
 // -- timeline phases (seconds), shared by both directions -------------------
+// All phases are in scene time; the intro card runs before scene time 0.
 const T = {
+  intro: 2.6,
   duEnter: 0.4,
   buildS: 1.3, buildE: 5.0,   // tangle builds
   holdE: 6.4,                 // hold on the limited mess
@@ -244,7 +246,8 @@ function Node({ x, y, r, fill, opacity = 1, halo = 0, haloColor }) {
 //  SCENE
 // ---------------------------------------------------------------------------
 function Scene({ dir, accent, total, countries, logoSrc, lang }) {
-  const t = useTime();
+  const tAbs = useTime();
+  const t = tAbs - T.intro; // scene time; negative while the intro card shows
   const ORANGE = accent || '#F74C16';
   const TOTAL = +total || 2412;
   const COUNTRIES = +countries || 42;
@@ -577,7 +580,39 @@ function Scene({ dir, accent, total, countries, logoSrc, lang }) {
     React.createElement('div', { key: 2, style: { display: 'flex', gap: 10, alignItems: 'center' } }, [React.createElement('span', { key: 'd', style: { width: 12, height: 12, borderRadius: 7, background: ORANGE, display: 'inline-block' } }), L.legendAi]),
   ]));
 
-  return React.createElement('div', { style: { position: 'absolute', inset: 0, opacity: globalOpacity } }, [svg, hubEl, ...overlays]);
+  // ---------- intro card: brand wordmark that cross-fades into the scene ----------
+  const introIn = ph(tAbs, 0.25, 1.0, Easing.easeOutCubic);
+  const introOut = 1 - ph(tAbs, T.intro - 0.55, T.intro + 0.4, Easing.easeInOutCubic);
+  const introO = Math.min(introIn, introOut);
+  let introEl = null;
+  if (introO > 0.001) {
+    const rise = (1 - introIn) * 26;                                               // settles up as it enters
+    const lift = ph(tAbs, T.intro - 0.55, T.intro + 0.4, Easing.easeInCubic) * -20; // drifts up as it hands over
+    introEl = React.createElement('div', {
+      key: 'intro',
+      style: {
+        position: 'absolute', inset: 0,
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 36,
+        opacity: introO, transform: `translateY(${rise + lift}px)`,
+        pointerEvents: 'none',
+      },
+    }, [
+      React.createElement('img', {
+        key: 'logo', src: LOGO, alt: '',
+        style: { width: 104, height: 104, objectFit: 'contain', filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.10))' },
+      }),
+      React.createElement('div', {
+        key: 'word',
+        style: {
+          fontFamily: DISP, fontSize: 96, fontWeight: 600, color: INK, whiteSpace: 'nowrap',
+          letterSpacing: `${lerp(0.08, -0.02, introIn)}em`, lineHeight: 1,
+        },
+      }, 'ALLOY NORDIC'),
+    ]);
+  }
+
+  const sceneEl = React.createElement('div', { key: 'scene', style: { position: 'absolute', inset: 0, opacity: globalOpacity } }, [svg, hubEl, ...overlays]);
+  return React.createElement('div', { style: { position: 'absolute', inset: 0 } }, [sceneEl, introEl]);
 }
 
 // -- exported entrypoint ----------------------------------------------------
@@ -586,7 +621,7 @@ function Scene({ dir, accent, total, countries, logoSrc, lang }) {
 function AlloyFlow({ direction = 'A', accent, total, countries, logoSrc, chrome = false, lang = 'sv' }) {
   const dir = direction === 'B' ? 'B' : 'A';
   return React.createElement(Stage, {
-    width: W, height: H, duration: T.dur, background: BG,
+    width: W, height: H, duration: T.intro + T.dur, background: BG,
     loop: true, autoplay: true, persist: false, chrome,
   }, React.createElement(Scene, { dir, accent, total, countries, logoSrc, lang }));
 }
