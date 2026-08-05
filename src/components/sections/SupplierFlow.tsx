@@ -21,18 +21,24 @@ const SupplierFlow = () => {
   }, []);
 
   return (
-    <section ref={ref} id="rackvidd" className="relative w-full bg-[#F1F0EC] pb-16 md:pb-24">
-      {/* 16:9 stage; the self-contained scene fills it via position:absolute */}
-      <div className="relative w-full aspect-[16/9]">
-        {inView && (
-          <AlloyFlow
-            logoSrc={alloyIcon}
-            accent="#F74C16"
-            total={2412}
-            countries={42}
-            lang={language}
-          />
-        )}
+    <section
+      ref={ref}
+      id="rackvidd"
+      className="relative w-full bg-[#F1F0EC] flex items-center overflow-hidden min-h-[100svh] md:min-h-0 md:block md:pb-24"
+    >
+      {/* Mobile: crop-to-fill the screen. Desktop: plain 16:9 stage. */}
+      <div className="relative w-full h-[100svh] md:h-auto md:aspect-[16/9] overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[62svh] aspect-[16/9] md:h-full md:w-full md:aspect-auto">
+          {inView && (
+            <AlloyFlow
+              logoSrc={alloyIcon}
+              accent="#F74C16"
+              total={2412}
+              countries={42}
+              lang={language}
+            />
+          )}
+        </div>
       </div>
     </section>
   );
