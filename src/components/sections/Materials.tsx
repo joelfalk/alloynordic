@@ -1,5 +1,4 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import SectionKicker from "@/components/SectionKicker";
 
 const Materials = () => {
   const { t } = useLanguage();
@@ -10,42 +9,24 @@ const Materials = () => {
     { code: "AL 6061", name: t("materials.al6061") },
     { code: "AL 7075", name: t("materials.al7075") },
     { code: "TI Gr.5", name: t("materials.ti") },
-    { code: "C360", name: t("materials.brass") },
     { code: "Cu-ETP", name: t("materials.copper") },
-    { code: "Tool Steel", name: t("materials.tool") },
+    { code: "1.2344", name: t("materials.tool") },
+    { code: "ZAMAK 5", name: t("materials.zinc") },
   ];
 
   return (
-    <section id="material" className="py-24 md:py-28 bg-secondary border-y border-border">
-      <div className="container px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-8 mb-12 items-end">
-            <div className="md:col-span-7">
-              <SectionKicker>{t("materials.kicker")}</SectionKicker>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
-                {t("materials.title")}
-              </h2>
+    <section id="material" className="bg-background border-t border-b border-border">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 py-10 grid md:grid-cols-[180px_1fr] gap-6 md:gap-10 items-start">
+        <span className="font-mono text-[11px] tracking-[0.2em] text-[#8C8A82] pt-1.5">
+          {t("materials.label")}
+        </span>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-5">
+          {materials.map((m) => (
+            <div key={m.code} className="flex items-baseline gap-2.5">
+              <span className="font-mono text-[11px] font-bold text-accent whitespace-nowrap">{m.code}</span>
+              <span className="text-sm font-medium">{m.name}</span>
             </div>
-            <p className="md:col-span-5 text-sm md:text-base text-muted-foreground leading-relaxed">
-              {t("materials.subtitle")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-border border border-border">
-            {materials.map((m, i) => (
-              <div
-                key={i}
-                className="bg-background hover:bg-accent/5 transition-colors p-5 md:p-6 group"
-              >
-                <div className="font-mono text-xs text-accent font-bold tracking-wider">
-                  {m.code}
-                </div>
-                <div className="mt-2 text-sm md:text-base font-semibold text-foreground group-hover:text-accent transition-colors">
-                  {m.name}
-                </div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>

@@ -9,13 +9,33 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+interface ContactAttachment {
+  filename: string;
+  contentBase64: string;
+  contentType?: string;
+}
+
 interface ContactFormData {
   namn: string;
   email: string;
   telefon?: string;
   foretag?: string;
   meddelande: string;
+  attachments?: ContactAttachment[];
 }
+
+// Server-side caps: the frontend limits uploads to 10 MB raw; allow a little
+// headroom here, and stay far below Resend's 40 MB email limit.
+const MAX_ATTACHMENTS = 10;
+const MAX_TOTAL_BYTES = 15 * 1024 * 1024;
+
+const sanitizeFilename = (name: string) =>
+  String(name ?? "bilaga")
+    .replace(/[/\\]/g, "_")
+    .slice(0, 200) || "bilaga";
+
+// Approximate decoded size of a base64 string without decoding it.
+const base64Bytes = (b64: string) => Math.floor((b64.length * 3) / 4);
 
 const escHtml = (s: string) =>
   String(s ?? "")
@@ -33,12 +53,27 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const formData: ContactFormData = await req.json();
-    console.log("Received contact form submission:", formData);
+    console.log("Received contact form submission:", {
+      ...formData,
+      attachments: (formData.attachments ?? []).map((a) => a?.filename),
+    });
 
     // Validate required fields
     if (!formData.namn || !formData.email || !formData.meddelande) {
       console.error("Missing required fields");
       throw new Error("Namn, email och meddelande krävs");
+    }
+
+    // Validate attachments
+    const attachments = (formData.attachments ?? []).filter(
+      (a) => a && typeof a.contentBase64 === "string" && a.contentBase64.length > 0,
+    );
+    if (attachments.length > MAX_ATTACHMENTS) {
+      throw new Error("För många bifogade filer");
+    }
+    const totalBytes = attachments.reduce((sum, a) => sum + base64Bytes(a.contentBase64), 0);
+    if (totalBytes > MAX_TOTAL_BYTES) {
+      throw new Error("Bifogade filer är för stora");
     }
 
     const emailHtml = `
@@ -78,6 +113,12 @@ const handler = async (req: Request): Promise<Response> => {
       subject: `Nytt kontaktmeddelande från ${formData.namn}`,
       html: emailHtml,
       reply_to: formData.email,
+      ...(attachments.length > 0 && {
+        attachments: attachments.map((a) => ({
+          filename: sanitizeFilename(a.filename),
+          content: a.contentBase64,
+        })),
+      }),
     });
 
     console.log("Email sent successfully:", emailResponse);

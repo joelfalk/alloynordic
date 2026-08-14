@@ -1,179 +1,288 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
-import SectionKicker from "@/components/SectionKicker";
+
+const inputClass =
+  "w-full box-border px-3.5 py-[13px] bg-[rgba(241,240,236,0.05)] border border-[rgba(241,240,236,0.25)] text-[#F1F0EC] text-[15px] font-sans placeholder:text-[rgba(241,240,236,0.4)] focus:outline-none focus:border-accent";
+
+const labelClass =
+  "flex flex-col gap-2 font-mono text-[10px] tracking-[0.16em] uppercase text-[#8C8A82]";
+
+// Total raw size cap for attached drawings; base64 inflates ~33% and the
+// edge function request body has to stay well under Supabase's payload limit.
+const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
+
+const fileToBase64 = (file: File) =>
+  new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve((reader.result as string).split(",")[1] ?? "");
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+
 const Contact = () => {
-  const {
-    toast
-  } = useToast();
-  const {
-    t
-  } = useLanguage();
+  const { toast } = useToast();
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     namn: "",
     email: "",
-    telefon: "",
     foretag: "",
-    meddelande: ""
+    meddelande: "",
   });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setSent(false);
   };
+
+  const addFiles = (list: FileList | null) => {
+    if (!list) return;
+    const incoming = Array.from(list);
+    const total = [...files, ...incoming].reduce((sum, f) => sum + f.size, 0);
+    if (total > MAX_ATTACHMENT_BYTES) {
+      toast({
+        title: t("contact.toast.fileTooLargeTitle"),
+        description: t("contact.toast.fileTooLargeDesc"),
+        variant: "destructive",
+      });
+      return;
+    }
+    setFiles((prev) => [...prev, ...incoming]);
+    setSent(false);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // File names stay in the message body as a fallback in case an email
+    // client strips the attachments.
+    const meddelande =
+      formData.meddelande +
+      (files.length ? `\n\nRitningsfiler: ${files.map((f) => f.name).join(", ")}` : "");
+
     try {
-      const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
+      const attachments = await Promise.all(
+        files.map(async (f) => ({
+          filename: f.name,
+          contentType: f.type || "application/octet-stream",
+          contentBase64: await fileToBase64(f),
+        })),
+      );
+
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          namn: formData.namn,
+          email: formData.email,
+          telefon: "",
+          foretag: formData.foretag,
+          meddelande,
+          attachments,
+        },
       });
 
       if (error) {
         console.error("Error sending email:", error);
         toast({
-          title: t("contact.toast.errorTitle") || "Fel",
-          description: t("contact.toast.errorDesc") || "Kunde inte skicka meddelandet. Försök igen.",
+          title: t("contact.toast.errorTitle"),
+          description: t("contact.toast.errorDesc"),
           variant: "destructive",
         });
         return;
       }
 
-      console.log("Email sent successfully:", data);
-      toast({
-        title: t("contact.toast.title"),
-        description: t("contact.toast.desc"),
-      });
-      setFormData({
-        namn: "",
-        email: "",
-        telefon: "",
-        foretag: "",
-        meddelande: "",
-      });
+      toast({ title: t("contact.toast.title"), description: t("contact.toast.desc") });
+      setSent(true);
+      setFormData({ namn: "", email: "", foretag: "", meddelande: "" });
+      setFiles([]);
     } catch (error) {
       console.error("Error:", error);
       toast({
-        title: t("contact.toast.errorTitle") || "Fel",
-        description: t("contact.toast.errorDesc") || "Kunde inte skicka meddelandet. Försök igen.",
+        title: t("contact.toast.errorTitle"),
+        description: t("contact.toast.errorDesc"),
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-  return <section id="kontakt" className="py-24 md:py-32 bg-background">
-      <div className="container px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="grid md:grid-cols-12 gap-8 mb-16 items-end">
-            <div className="md:col-span-7">
-              <SectionKicker>{t("contact.kicker")}</SectionKicker>
-              <h2 className="mt-4 text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-                {t("contact.title")}
-              </h2>
-            </div>
-            <p className="md:col-span-5 text-base text-muted-foreground leading-relaxed">
-              {t("contact.subtitle")}
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-card border rounded-lg p-8 shadow-sm">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="namn">{t("contact.form.name")} *</Label>
-                    <Input id="namn" name="namn" value={formData.namn} onChange={handleChange} required placeholder={t("contact.form.namePlaceholder")} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">{t("contact.form.email")} *</Label>
-                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder={t("contact.form.emailPlaceholder")} />
-                  </div>
-                </div>
-                
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="telefon">{t("contact.form.phone")}</Label>
-                    <Input id="telefon" name="telefon" type="tel" value={formData.telefon} onChange={handleChange} placeholder={t("contact.form.phonePlaceholder")} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="foretag">{t("contact.form.company")}</Label>
-                    <Input id="foretag" name="foretag" value={formData.foretag} onChange={handleChange} placeholder={t("contact.form.companyPlaceholder")} />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="meddelande">{t("contact.form.message")} *</Label>
-                  <Textarea id="meddelande" name="meddelande" value={formData.meddelande} onChange={handleChange} required placeholder={t("contact.form.messagePlaceholder")} rows={5} />
-                </div>
-                
-                <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={isSubmitting}>
-                  {isSubmitting ? t("contact.form.submitting") : t("contact.form.submit")}
-                </Button>
-              </form>
-            </div>
-            
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">
-                  {t("contact.talk")}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  {t("contact.info")}
-                </p>
+
+  const submitLabel = isSubmitting
+    ? t("contact.form.submitting")
+    : sent
+      ? t("contact.form.done")
+      : t("contact.form.submit");
+
+  return (
+    <section id="kontakt" className="bg-primary text-primary-foreground py-16 md:py-[110px]">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div>
+          <span className="font-mono text-[11px] tracking-[0.2em] text-accent">{t("contact.kicker")}</span>
+          <h2 className="mt-[18px] text-4xl md:text-[52px] font-semibold tracking-[-0.02em] leading-[1.06] [text-wrap:balance]">
+            {t("contact.h2")}
+          </h2>
+          <div className="mt-10 md:mt-[52px] flex flex-col gap-6">
+            <div>
+              <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#8C8A82] mb-[5px]">
+                {t("contact.email")}
               </div>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{t("contact.email")}</h4>
-                    <p className="text-muted-foreground">joel@alloynordic.se</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{t("contact.phone")}</h4>
-                    <p className="text-muted-foreground">+46 070 66 750 99</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{t("contact.address")}</h4>
-                    <p className="text-muted-foreground">Ågatan 47, 334 32 Anderstorp</p>
-                  </div>
-                </div>
+              <a
+                href="mailto:info@alloynordic.se"
+                className="text-lg font-semibold text-primary-foreground hover:text-accent transition-colors duration-150"
+              >
+                info@alloynordic.se
+              </a>
+            </div>
+            <div>
+              <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#8C8A82] mb-[5px]">
+                {t("contact.phone")}
               </div>
+              <a
+                href="tel:+46706675099"
+                className="text-lg font-semibold text-primary-foreground hover:text-accent transition-colors duration-150"
+              >
+                +46 70 66 750 99
+              </a>
+            </div>
+            <div>
+              <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#8C8A82] mb-[5px]">
+                {t("contact.address")}
+              </div>
+              <span className="text-lg font-semibold">Ågatan 47, 334 32 Anderstorp</span>
             </div>
           </div>
         </div>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-[18px] lg:pt-2">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <label className={labelClass}>
+              {t("contact.form.name")} *
+              <input
+                name="namn"
+                value={formData.namn}
+                onChange={handleChange}
+                required
+                placeholder={t("contact.form.namePlaceholder")}
+                className={inputClass}
+              />
+            </label>
+            <label className={labelClass}>
+              {t("contact.form.email")} *
+              <input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder={t("contact.form.emailPlaceholder")}
+                className={inputClass}
+              />
+            </label>
+          </div>
+          <label className={labelClass}>
+            {t("contact.form.company")}
+            <input
+              name="foretag"
+              value={formData.foretag}
+              onChange={handleChange}
+              placeholder={t("contact.form.companyPlaceholder")}
+              className={inputClass}
+            />
+          </label>
+          <label className={labelClass}>
+            {t("contact.form.message")} *
+            <textarea
+              name="meddelande"
+              value={formData.meddelande}
+              onChange={handleChange}
+              required
+              rows={4}
+              placeholder={t("contact.form.messagePlaceholder")}
+              className={`${inputClass} resize-y`}
+            />
+          </label>
+
+          {/* Drawing dropzone */}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => fileInputRef.current?.click()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                fileInputRef.current?.click();
+              }
+            }}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragOver(true);
+            }}
+            onDragLeave={() => setDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragOver(false);
+              addFiles(e.dataTransfer.files);
+            }}
+            className={`border border-dashed p-[18px] text-center text-[13px] cursor-pointer transition-colors duration-150 ${
+              dragOver ? "border-accent text-primary-foreground" : "border-[rgba(241,240,236,0.3)] text-[#8C8A82]"
+            }`}
+          >
+            {files.length === 0 ? (
+              t("contact.form.dropzone")
+            ) : (
+              <div className="flex flex-wrap justify-center gap-2">
+                {files.map((f, i) => (
+                  <span
+                    key={`${f.name}-${i}`}
+                    className="inline-flex items-center gap-2 border border-[rgba(241,240,236,0.25)] px-2.5 py-1 text-primary-foreground font-mono text-[11px]"
+                  >
+                    {f.name}
+                    <button
+                      type="button"
+                      aria-label={`Ta bort ${f.name}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setFiles((prev) => prev.filter((_, j) => j !== i));
+                      }}
+                      className="text-[#8C8A82] hover:text-accent"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept=".pdf,.step,.stp,.iges,.igs,.dxf,.dwg,.zip"
+              className="hidden"
+              onChange={(e) => {
+                addFiles(e.target.files);
+                e.target.value = "";
+              }}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-accent text-accent-foreground text-[15px] font-semibold px-5 py-4 hover:bg-[#C93A0E] transition-colors duration-150 disabled:opacity-70"
+          >
+            {submitLabel}
+          </button>
+        </form>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Contact;

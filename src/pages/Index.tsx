@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Hero from "@/components/sections/Hero";
 import SupplierFlow from "@/components/sections/SupplierFlow";
-import ProcessFlowSection from "@/components/sections/ProcessFlowSection";
+import Process from "@/components/sections/Process";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Materials from "@/components/sections/Materials";
@@ -31,7 +31,7 @@ const Index = () => {
   return (
     <main>
       <Helmet>
-        <title>Alloy Nordic — Global Sourcing for Metal Parts</title>
+        <title>Alloy Nordic — Global sourcing av metalldelar</title>
         <meta name="description" content="Alloy Nordic är din partner för global sourcing av industridetaljer från Kina till Sverige — kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
         <link rel="canonical" href="https://alloynordic.se/" />
         <meta property="og:type" content="website" />
@@ -45,9 +45,9 @@ const Index = () => {
         <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
       </Helmet>
       <Navbar />
-      <SupplierFlow />
       <Hero />
-      <ProcessFlowSection />
+      <SupplierFlow />
+      <Process />
       <Services />
       <Materials />
       <About />

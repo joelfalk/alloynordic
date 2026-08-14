@@ -1,110 +1,63 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import alloyIcon from "@/assets/alloy-o-icon.png";
-import heroBg from "@/assets/hero-options/raw-materials.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
+import rawMaterials from "@/assets/hero-options/raw-materials.jpg";
 
 const Hero = () => {
   const { t } = useLanguage();
 
+  const stats = [
+    { value: "35+", label: t("hero.stat.years") },
+    { value: t("hero.stat.suppliersValue"), label: t("hero.stat.suppliers") },
+    { value: "42", label: t("hero.stat.countries") },
+    { value: "24h", label: t("hero.stat.response") },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary">
-      {/* Background image */}
-      <img
-        src={heroBg}
-        alt=""
-        aria-hidden="true"
-        width={1920}
-        height={1080}
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      {/* Layered overlays — keep image visible */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-primary/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-primary/40" />
-
-      {/* Decorative kicker line */}
-      <div className="absolute top-24 left-0 right-0 hidden md:block">
-        <div className="container px-4">
-          <div className="flex items-center gap-3 text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
-            <span className="block w-12 h-px bg-accent" />
-            EST. 2025 · ANDERSTORP
-          </div>
-        </div>
-      </div>
-
-      <div className="container relative z-10 px-4 pt-24 pb-32">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Company Name */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none">
-            <span className="flex items-center justify-center gap-0">
-              <span>ALL</span>
-              <img
-                src={alloyIcon}
-                alt="Alloy Nordic logo icon"
-                className="h-[0.85em] w-auto inline-block brightness-0 invert"
-              />
-              <span>Y</span>
-              <span className="text-accent ml-3 sm:ml-4">NORDIC</span>
-            </span>
+    <section id="hero" className="bg-background">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 py-16 md:py-20 grid lg:grid-cols-[7fr_5fr] gap-12 lg:gap-[72px] items-center">
+        <div>
+          <span className="font-mono text-[11px] tracking-[0.2em] text-accent">{t("hero.kicker")}</span>
+          <h1 className="mt-5 text-4xl md:text-[46px] leading-[1.1] font-semibold tracking-[-0.02em] [text-wrap:balance]">
+            {t("hero.h1")}
           </h1>
-
-          {/* Banner — curtain reveal (single continuous block) */}
-          <div className="mt-8 overflow-hidden">
-            <div className="will-change-transform motion-safe:animate-curtain-down">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight max-w-3xl mx-auto">
-                {t("hero.banner.lead")}
-              </p>
-            </div>
+          <p className="mt-[22px] text-lg leading-[1.6] text-[#4A4842] max-w-[520px]">{t("hero.sub")}</p>
+          <div className="mt-9 flex items-center gap-5">
+            <a
+              href="#kontakt"
+              className="bg-primary text-primary-foreground text-[15px] font-semibold px-[30px] py-4 inline-flex items-center gap-2.5 hover:bg-accent transition-colors duration-150"
+            >
+              {t("hero.cta")} <span aria-hidden="true">→</span>
+            </a>
+            <span className="font-mono text-[11px] tracking-[0.1em] text-[#8C8A82]">{t("hero.response")}</span>
           </div>
         </div>
-
-        <div className="max-w-4xl mx-auto">
-          {/* CTAs */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Button
-              asChild
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 px-7 py-6 text-base font-semibold rounded-none"
-            >
-              <a href="#kontakt" className="inline-flex items-center gap-2">
-                {t("hero.cta.contact")}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </Button>
-            <Link
-              to="/tillverkningsprocesser"
-              className="group inline-flex items-center gap-2 text-white/90 hover:text-accent text-base font-medium transition-colors"
-            >
-              {t("hero.cta.manufacturing")}
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+        <div className="relative">
+          <div className="aspect-[4/3] overflow-hidden">
+            <img src={rawMaterials} alt="Metallmaterial" className="w-full h-full object-cover" />
           </div>
+          <div className="absolute -bottom-[18px] -right-[18px] w-[88px] h-[88px] bg-accent" aria-hidden="true" />
         </div>
       </div>
 
-      {/* Stat bar at bottom of hero */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/15 bg-primary/40 backdrop-blur-sm">
-        <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/15">
-            {[
-              { v: "35+", l: t("hero.stat.years") },
-              { v: "20+", l: t("hero.stat.countries") },
-              { v: "24h", l: t("hero.stat.response") },
-              { v: "100%", l: t("hero.stat.qc") },
-            ].map((s, i) => (
-              <div key={i} className="py-5 px-4 first:pl-0">
-                <div className="font-mono text-2xl md:text-3xl font-bold text-accent leading-none">
-                  {s.v}
-                </div>
-                <div className="mt-1.5 text-[11px] md:text-xs uppercase tracking-wider text-white/60">
-                  {s.l}
-                </div>
+      {/* Stat strip */}
+      <div className="border-t border-b border-border">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={[
+                "py-7",
+                i === 0 ? "pr-6" : "px-6",
+                i % 2 === 1 ? "border-l border-border" : "",
+                i === 2 ? "md:border-l md:border-border" : "",
+                i >= 2 ? "border-t border-border md:border-t-0" : "",
+              ].join(" ")}
+            >
+              <div className="text-[38px] font-bold tracking-[-0.02em] leading-none [font-variant-numeric:tabular-nums]">
+                {s.value}
               </div>
-            ))}
-          </div>
+              <div className="mt-2 font-mono text-[10px] tracking-[0.18em] text-[#8C8A82]">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -245,9 +245,11 @@ function Node({ x, y, r, fill, opacity = 1, halo = 0, haloColor }) {
 // ---------------------------------------------------------------------------
 //  SCENE
 // ---------------------------------------------------------------------------
-function Scene({ dir, accent, total, countries, logoSrc, lang }) {
+function Scene({ dir, accent, total, countries, logoSrc, lang, skipIntro }) {
   const tAbs = useTime();
-  const t = tAbs - T.intro; // scene time; negative while the intro card shows
+  // Scene time; negative while the intro card shows. With skipIntro the clock
+  // starts directly at the tangle scene.
+  const t = skipIntro ? tAbs : tAbs - T.intro;
   const ORANGE = accent || '#F74C16';
   const TOTAL = +total || 2412;
   const COUNTRIES = +countries || 42;
@@ -585,7 +587,7 @@ function Scene({ dir, accent, total, countries, logoSrc, lang }) {
   const introOut = 1 - ph(tAbs, T.intro - 0.55, T.intro + 0.4, Easing.easeInOutCubic);
   const introO = Math.min(introIn, introOut);
   let introEl = null;
-  if (introO > 0.001) {
+  if (!skipIntro && introO > 0.001) {
     const rise = (1 - introIn) * 26;                                               // settles up as it enters
     const lift = ph(tAbs, T.intro - 0.55, T.intro + 0.4, Easing.easeInCubic) * -20; // drifts up as it hands over
     introEl = React.createElement('div', {
@@ -618,12 +620,12 @@ function Scene({ dir, accent, total, countries, logoSrc, lang }) {
 // -- exported entrypoint ----------------------------------------------------
 // Varldskarta-locked hero. Pass chrome to show the scrubber, accent/total/countries
 // to tweak the data/brand, logoSrc to point at your imported asset.
-function AlloyFlow({ direction = 'A', accent, total, countries, logoSrc, chrome = false, lang = 'sv' }) {
+function AlloyFlow({ direction = 'A', accent, total, countries, logoSrc, chrome = false, lang = 'sv', skipIntro = false }) {
   const dir = direction === 'B' ? 'B' : 'A';
   return React.createElement(Stage, {
-    width: W, height: H, duration: T.intro + T.dur, background: BG,
+    width: W, height: H, duration: skipIntro ? T.dur : T.intro + T.dur, background: BG,
     loop: true, autoplay: true, persist: false, chrome,
-  }, React.createElement(Scene, { dir, accent, total, countries, logoSrc, lang }));
+  }, React.createElement(Scene, { dir, accent, total, countries, logoSrc, lang, skipIntro }));
 }
 
 export default AlloyFlow;

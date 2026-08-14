@@ -106,7 +106,7 @@ export default {
   		},
   		fontFamily: {
   			sans: [
-  				'Inter',
+  				'Schibsted Grotesk',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -118,17 +118,8 @@ export default {
   				'Noto Sans',
   				'sans-serif'
   			],
-  			serif: [
-  				'Lora',
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
-  			],
   			mono: [
-  				'Space Mono',
+  				'JetBrains Mono',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',

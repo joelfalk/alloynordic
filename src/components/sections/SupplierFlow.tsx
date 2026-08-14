@@ -14,26 +14,30 @@ const SupplierFlow = () => {
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <section ref={ref} id="rackvidd" className="relative w-full bg-[#F1F0EC]">
-      {/* Full-viewport stage; the 16:9 scene is contain-fit and centered by Stage,
-          and the surrounding space matches the scene's beige background */}
-      <div className="relative w-full h-svh">
-        {inView && (
-          <AlloyFlow
-            logoSrc={alloyIcon}
-            accent="#F74C16"
-            total={2412}
-            countries={42}
-            lang={language}
-          />
-        )}
+    <section ref={ref} id="rackvidd" className="bg-background pt-16 md:pt-[110px]">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+        <div className="border border-border overflow-hidden">
+          {/* 16:9 stage; the self-contained scene fills it via position:absolute */}
+          <div className="relative w-full aspect-[16/9]">
+            {inView && (
+              <AlloyFlow
+                logoSrc={alloyIcon}
+                accent="#F74C16"
+                total={2412}
+                countries={42}
+                lang={language}
+                skipIntro
+              />
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
