@@ -1,16 +1,16 @@
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Services = () => {
   const { t } = useLanguage();
+  // One expandable card open at a time; clicking the open card closes it.
+  const [open, setOpen] = useState<number | null>(null);
 
-  const services = [
-    { title: t("services.1.title"), desc: t("services.1.desc") },
-    { title: t("services.2.title"), desc: t("services.2.desc") },
-    { title: t("services.3.title"), desc: t("services.3.desc") },
-    { title: t("services.4.title"), desc: t("services.4.desc") },
-    { title: t("services.5.title"), desc: t("services.5.desc") },
-    { title: t("services.6.title"), desc: t("services.6.desc") },
-  ];
+  const services = [1, 2, 3, 4, 5, 6].map((n) => ({
+    title: t(`services.${n}.title`),
+    desc: t(`services.${n}.desc`),
+    details: t(`services.${n}.details`),
+  }));
 
   return (
     <section id="tjanster" className="bg-background pb-16 md:pb-[110px]">
@@ -24,18 +24,27 @@ const Services = () => {
           </span>
         </div>
         <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
-          {services.map((s) => (
-            <a
+          {services.map((s, i) => (
+            <button
               key={s.title}
-              href="#kontakt"
-              className="bg-background px-8 py-[34px] flex flex-col gap-2.5 hover:bg-[#EAE8E2] transition-colors duration-150 text-foreground"
+              type="button"
+              onClick={() => setOpen((prev) => (prev === i ? null : i))}
+              aria-expanded={open === i}
+              className="bg-background px-8 py-[34px] flex flex-col items-stretch gap-2.5 hover:bg-[#EAE8E2] transition-colors duration-150 text-foreground text-left cursor-pointer"
             >
               <div className="flex justify-between items-baseline">
                 <h3 className="text-2xl font-semibold tracking-[-0.01em]">{s.title}</h3>
-                <span className="text-accent text-lg" aria-hidden="true">↗</span>
+                <span className="text-accent text-xl leading-none font-medium" aria-hidden="true">
+                  {open === i ? "⌃" : "⌄"}
+                </span>
               </div>
               <p className="text-[15px] leading-[1.55] text-[#6E6C64]">{s.desc}</p>
-            </a>
+              {open === i && (
+                <div className="mt-1.5 pt-4 border-t border-border">
+                  <p className="text-sm leading-[1.65] text-[#4A4842]">{s.details}</p>
+                </div>
+              )}
+            </button>
           ))}
         </div>
       </div>

@@ -57,6 +57,18 @@ const translations = {
     "services.5.desc": "Från ritning till fysisk prototyp — innan du binder upp volym.",
     "services.6.title": "Teknisk rådgivning",
     "services.6.desc": "Vi utvärderar rätt tillverkningsmetod och stöttar med teknisk expertis genom hela projektet.",
+    "services.1.details":
+      "Vi matchar din detalj mot leverantörer med rätt maskinpark, kapacitet och certifikat — och du får jämförbara offerter samlade i ett beslutsunderlag.",
+    "services.2.details":
+      "Kontrollen sker hos leverantören eller hos vår partner innan frakt: måttkontroll mot ritning, ytkontroll och dokumentation. Avvikelser åtgärdas innan detaljerna lämnar landet.",
+    "services.3.details":
+      "Sjö-, flyg- eller vägfrakt efter behov. Vi sköter tull och dokument — du följer leveransen hela vägen till dörren.",
+    "services.4.details":
+      "Skärande bearbetning, pressgjutning, MIM, varmpressning och smide — metoden väljs efter geometri, material och volym.",
+    "services.5.details":
+      "Prototyper i litet antal för form-, funktions- och monteringstest — snabb återkoppling innan serieverktyg beställs.",
+    "services.6.details":
+      "Vi granskar ritningar, föreslår materialval och utvärderar vilken tillverkningsmetod som ger bäst totalkostnad för din volym.",
 
     // Material
     "materials.label": "MATERIAL",
@@ -180,6 +192,18 @@ const translations = {
     "services.5.desc": "From drawing to physical prototype — before you commit to volume.",
     "services.6.title": "Technical advisory",
     "services.6.desc": "We evaluate the right production method and provide technical expertise throughout the project.",
+    "services.1.details":
+      "We match your part against suppliers with the right machinery, capacity and certificates — and you get comparable quotes gathered into one decision basis.",
+    "services.2.details":
+      "Inspection happens at the factory before shipping: dimensional checks against the drawing, surface inspection and documentation. Deviations are corrected before parts leave the country.",
+    "services.3.details":
+      "Sea, air or road freight as needed. We handle customs and documents — you follow the delivery all the way to your door.",
+    "services.4.details":
+      "Machining, die casting, MIM, hot pressing and forging — the method is chosen based on geometry, material and volume.",
+    "services.5.details":
+      "Small-batch prototypes for form, fit and assembly testing — fast feedback before series tooling is ordered.",
+    "services.6.details":
+      "We review drawings, suggest materials and evaluate which production method gives the best total cost for your volume.",
 
     // Materials
     "materials.label": "MATERIALS",
