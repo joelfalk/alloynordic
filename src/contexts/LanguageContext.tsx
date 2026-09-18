@@ -22,7 +22,7 @@ const translations = {
     "hero.kicker": "ALLOY NORDIC — ANDERSTORP, SVERIGE",
     "hero.h1": "Global sourcing av metalldelar — från ritning till levererad detalj.",
     "hero.sub":
-      "Alloy Nordic hittar rätt fabrik, kontrollerar kvaliteten på plats och levererar till din dörr — med en svensk kontakt hela vägen.",
+      "Alloy Nordic hjälper dig med rätt leverantör, kontrollerar kvaliteten på plats och levererar till din dörr — med en svensk kontakt hela vägen.",
     "hero.cta": "Skicka ritning",
     "hero.response": "SVAR INOM 24 H",
     "hero.stat.years": "ÅR I METALLBRANSCHEN",
@@ -46,7 +46,7 @@ const translations = {
     "services.h2": "Ett ansvar — hela vägen",
     "services.kicker": "TJÄNSTER",
     "services.1.title": "Sourcing & matchning",
-    "services.1.desc": "Rätt fabrik för din detalj — ur 2 400+ kvalificerade leverantörer.",
+    "services.1.desc": "Rätt produktion för din detalj — ur 2 400+ kvalificerade leverantörer.",
     "services.2.title": "Kvalitetskontroll",
     "services.2.desc": "Inspektion mot dina toleranser — innan något lämnar fabriken.",
     "services.3.title": "Logistik & frakt",
@@ -85,9 +85,11 @@ const translations = {
     "about.kicker": "OM OSS",
     "about.h2": "En svensk partner. Ett globalt nätverk.",
     "about.para":
-      "Alloy Nordic är en svensk sourcingpartner i Anderstorp, grundad av ett team med över 35 års erfarenhet av metallinköp. Vi kombinerar branscherfarenheten med en AI-driven offertplattform — så att du kan sourca globalt med samma trygghet som lokalt.",
+      "Alloy Nordic är en svensk sourcingpartner i Anderstorp, grundad av ett team med över 35 års erfarenhet av metallinköp. Vi kombinerar branscherfarenheten med en AI-driven sourcingplattform — så att du kan sourca globalt med samma trygghet som lokalt.",
     "about.meta1": "GRUNDAT 2025",
     "about.meta3": "35+ ÅRS BRANSCHERFARENHET",
+    "about.carousel.prev": "Föregående bild",
+    "about.carousel.next": "Nästa bild",
 
     // Kontakt
     "contact.kicker": "KONTAKT",
@@ -157,7 +159,7 @@ const translations = {
     "hero.kicker": "ALLOY NORDIC — ANDERSTORP, SWEDEN",
     "hero.h1": "Global sourcing of metal parts — from drawing to delivered part.",
     "hero.sub":
-      "Alloy Nordic finds the right factory, inspects quality on site and delivers to your door — with one Swedish contact all the way.",
+      "Alloy Nordic helps you find the right supplier, inspects quality on site and delivers to your door — with one Swedish contact all the way.",
     "hero.cta": "Send a drawing",
     "hero.response": "REPLY WITHIN 24 H",
     "hero.stat.years": "YEARS IN THE METAL INDUSTRY",
@@ -181,7 +183,7 @@ const translations = {
     "services.h2": "One responsibility — all the way",
     "services.kicker": "SERVICES",
     "services.1.title": "Sourcing & matching",
-    "services.1.desc": "The right factory for your part — out of 2,400+ qualified suppliers.",
+    "services.1.desc": "The right production for your part — out of 2,400+ qualified suppliers.",
     "services.2.title": "Quality control",
     "services.2.desc": "Inspection to your tolerances — before anything leaves the factory.",
     "services.3.title": "Logistics & freight",
@@ -220,9 +222,11 @@ const translations = {
     "about.kicker": "ABOUT US",
     "about.h2": "A Swedish partner. A global network.",
     "about.para":
-      "Alloy Nordic is a Swedish sourcing partner in Anderstorp, founded by a team with over 35 years of experience in metal purchasing. We combine that industry experience with an AI-driven quoting platform — so you can source globally with the same confidence as locally.",
+      "Alloy Nordic is a Swedish sourcing partner in Anderstorp, founded by a team with over 35 years of experience in metal purchasing. We combine that industry experience with an AI-driven sourcing platform — so you can source globally with the same confidence as locally.",
     "about.meta1": "FOUNDED 2025",
     "about.meta3": "35+ YEARS OF INDUSTRY EXPERIENCE",
+    "about.carousel.prev": "Previous image",
+    "about.carousel.next": "Next image",
 
     // Contact
     "contact.kicker": "CONTACT",

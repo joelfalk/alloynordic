@@ -19,7 +19,7 @@ const Services = () => {
           <h2 className="text-4xl md:text-[44px] font-semibold tracking-[-0.02em] leading-[1.05]">
             {t("services.h2")}
           </h2>
-          <span className="font-mono text-[11px] tracking-[0.2em] text-[#8C8A82] whitespace-nowrap">
+          <span className="font-mono text-[11px] tracking-[0.2em] text-[#6E6C64] whitespace-nowrap">
             {t("services.kicker")}
           </span>
         </div>

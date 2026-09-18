@@ -275,7 +275,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-accent text-accent-foreground text-[15px] font-semibold px-5 py-4 hover:bg-[#C93A0E] transition-colors duration-150 disabled:opacity-70"
+            className="bg-accent-deep text-accent-foreground text-[15px] font-semibold px-5 py-4 hover:bg-[#9C2E08] transition-colors duration-150 disabled:opacity-70"
           >
             {submitLabel}
           </button>

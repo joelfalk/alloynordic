@@ -35,7 +35,7 @@ const Navbar = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-medium text-[#4A4842] hover:text-accent transition-colors duration-150"
+                className="text-sm font-medium text-[#4A4842] hover:text-accent-deep transition-colors duration-150"
               >
                 {l.label}
               </a>
@@ -45,12 +45,12 @@ const Navbar = () => {
           {/* Right side */}
           <div className="flex items-center gap-[18px]">
             {/* Lang switch */}
-            <div className="hidden sm:flex items-center gap-[5px] font-mono text-[11px] text-[#8C8A82]">
+            <div className="hidden sm:flex items-center gap-[5px] font-mono text-[11px] text-[#6E6C64]">
               <button
                 onClick={() => setLanguage("sv")}
                 className={cn(
-                  "transition-colors duration-150 hover:text-accent",
-                  language === "sv" && "text-accent font-bold",
+                  "transition-colors duration-150 hover:text-accent-deep",
+                  language === "sv" && "text-accent-deep font-bold",
                 )}
                 aria-label="Svenska"
               >
@@ -60,8 +60,8 @@ const Navbar = () => {
               <button
                 onClick={() => setLanguage("en")}
                 className={cn(
-                  "transition-colors duration-150 hover:text-accent",
-                  language === "en" && "text-accent font-bold",
+                  "transition-colors duration-150 hover:text-accent-deep",
+                  language === "en" && "text-accent-deep font-bold",
                 )}
                 aria-label="English"
               >
@@ -71,7 +71,7 @@ const Navbar = () => {
 
             <a
               href={anchor("#kontakt")}
-              className="hidden sm:inline-block bg-accent text-accent-foreground text-[13px] font-semibold px-5 py-2.5 hover:bg-[#C93A0E] transition-colors duration-150"
+              className="hidden sm:inline-block bg-accent-deep text-accent-foreground text-[13px] font-semibold px-5 py-2.5 hover:bg-[#9C2E08] transition-colors duration-150"
             >
               {t("nav.cta")}
             </a>
@@ -95,7 +95,7 @@ const Navbar = () => {
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-2 py-2.5 text-sm font-medium text-[#4A4842] hover:text-accent"
+                className="px-2 py-2.5 text-sm font-medium text-[#4A4842] hover:text-accent-deep"
               >
                 {l.label}
               </a>
@@ -103,20 +103,20 @@ const Navbar = () => {
             <a
               href={anchor("#kontakt")}
               onClick={() => setMobileOpen(false)}
-              className="mt-2 mx-2 bg-accent text-accent-foreground text-center text-[13px] font-semibold px-5 py-2.5"
+              className="mt-2 mx-2 bg-accent-deep text-accent-foreground text-center text-[13px] font-semibold px-5 py-2.5"
             >
               {t("nav.cta")}
             </a>
-            <div className="flex gap-2 pt-3 px-2 font-mono text-[11px] text-[#8C8A82]">
+            <div className="flex gap-2 pt-3 px-2 font-mono text-[11px] text-[#6E6C64]">
               <button
                 onClick={() => setLanguage("sv")}
-                className={cn("px-2 py-1 border border-border", language === "sv" && "text-accent font-bold border-accent")}
+                className={cn("px-2 py-1 border border-border", language === "sv" && "text-accent-deep font-bold border-accent-deep")}
               >
                 SV
               </button>
               <button
                 onClick={() => setLanguage("en")}
-                className={cn("px-2 py-1 border border-border", language === "en" && "text-accent font-bold border-accent")}
+                className={cn("px-2 py-1 border border-border", language === "en" && "text-accent-deep font-bold border-accent-deep")}
               >
                 EN
               </button>

@@ -30,9 +30,13 @@
     --muted: 45 16% 90.2%;
     --muted-foreground: 48 5% 41.2%;
 
-    /* Accent = brand orange #F74C16 */
+    /* Accent = brand orange #F74C16 (fills & graphics).
+       accent-deep = #BB360B: same hue, 5.05:1 on beige — for small orange
+       text and CTA button fills so AA contrast holds with margin.
+       (#C93A0E renders at 4.49:1 — just under the 4.5 requirement.) */
     --accent: 14.4 93.4% 52.7%;
     --accent-foreground: 48 15% 93.5%;
+    --accent-deep: 14.7 88.9% 38.8%;
 
     /* Brand alias */
     --brand: 14.4 93.4% 52.7%;

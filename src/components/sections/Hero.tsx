@@ -15,7 +15,7 @@ const Hero = () => {
     <section id="hero" className="bg-background">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8 py-16 md:py-20 grid lg:grid-cols-[7fr_5fr] gap-12 lg:gap-[72px] items-center">
         <div>
-          <span className="font-mono text-[11px] tracking-[0.2em] text-accent">{t("hero.kicker")}</span>
+          <span className="font-mono text-[11px] tracking-[0.2em] text-accent-deep">{t("hero.kicker")}</span>
           <h1 className="mt-5 text-4xl md:text-[46px] leading-[1.1] font-semibold tracking-[-0.02em] [text-wrap:balance]">
             {t("hero.h1")}
           </h1>
@@ -23,11 +23,11 @@ const Hero = () => {
           <div className="mt-9 flex items-center gap-5">
             <a
               href="#kontakt"
-              className="bg-primary text-primary-foreground text-[15px] font-semibold px-[30px] py-4 inline-flex items-center gap-2.5 hover:bg-accent transition-colors duration-150"
+              className="bg-primary text-primary-foreground text-[15px] font-semibold px-[30px] py-4 inline-flex items-center gap-2.5 hover:bg-accent-deep transition-colors duration-150"
             >
               {t("hero.cta")} <span aria-hidden="true">→</span>
             </a>
-            <span className="font-mono text-[11px] tracking-[0.1em] text-[#8C8A82]">{t("hero.response")}</span>
+            <span className="font-mono text-[11px] tracking-[0.1em] text-[#6E6C64]">{t("hero.response")}</span>
           </div>
         </div>
         <div className="relative">
@@ -55,7 +55,7 @@ const Hero = () => {
               <div className="text-[38px] font-bold tracking-[-0.02em] leading-none [font-variant-numeric:tabular-nums]">
                 {s.value}
               </div>
-              <div className="mt-2 font-mono text-[10px] tracking-[0.18em] text-[#8C8A82]">{s.label}</div>
+              <div className="mt-2 font-mono text-[10px] tracking-[0.18em] text-[#6E6C64]">{s.label}</div>
             </div>
           ))}
         </div>
