@@ -135,17 +135,17 @@ const ManufacturingProcesses = () => {
     <main className="min-h-screen bg-primary">
       <Helmet>
         <title>Tillverkningsprocesser — Alloy Nordic</title>
-        <meta name="description" content="Översikt över våra tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer i samarbete med utvalda leverantörer i Kina." />
+        <meta name="description" content="Översikt över våra tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer i samarbete med utvalda leverantörer världen över." />
         <link rel="canonical" href="https://alloynordic.se/tillverkningsprocesser" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Tillverkningsprocesser — Bearbetning, Gjutning, Sintring & Varmpressning" />
-        <meta property="og:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
+        <meta property="og:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från leverantör till kund." />
         <meta property="og:url" content="https://alloynordic.se/tillverkningsprocesser" />
-        <meta property="og:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <meta property="og:image" content="https://alloynordic.se/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tillverkningsprocesser — Bearbetning, Gjutning, Sintring & Varmpressning" />
-        <meta name="twitter:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från Kina till Sverige." />
-        <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <meta name="twitter:description" content="Översikt över Alloy Nordics tillverkningsprocesser: bearbetning, gjutning, sintring och varmpressning av industridetaljer med kvalitetskontroll och logistik från leverantör till kund." />
+        <meta name="twitter:image" content="https://alloynordic.se/og-image.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
