@@ -31,18 +31,18 @@ const Index = () => {
   return (
     <main>
       <Helmet>
-        <title>Alloy Nordic — Global sourcing av metalldelar</title>
-        <meta name="description" content="Alloy Nordic är din partner för global sourcing av industridetaljer från Kina till Sverige — kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
+        <title>Alloy Nordic — AI-driven offertautomation och global sourcing</title>
+        <meta name="description" content="AI-driven offertautomation. Global sourcing. Bättre affärer. Alloy Nordic levererar industridetaljer från hela världen med kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
         <link rel="canonical" href="https://alloynordic.se/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Alloy Nordic — Industrial Sourcing från Kina till Sverige" />
-        <meta property="og:description" content="Alloy Nordic är din partner för global sourcing av metalldetaljer — skräddarsydd produktion enligt ritning, kvalitetskontroll och logistik från Kina till Sverige." />
+        <meta property="og:title" content="Alloy Nordic — AI-driven offertautomation. Global sourcing. Bättre affärer." />
+        <meta property="og:description" content="AI-driven offertautomation. Global sourcing. Bättre affärer. Alloy Nordic levererar industridetaljer från hela världen med kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
         <meta property="og:url" content="https://alloynordic.se/" />
-        <meta property="og:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <meta property="og:image" content="https://alloynordic.se/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Alloy Nordic — Industrial Sourcing från Kina till Sverige" />
-        <meta name="twitter:description" content="Alloy Nordic är din partner för global sourcing av metalldetaljer — skräddarsydd produktion enligt ritning, kvalitetskontroll och logistik från Kina till Sverige." />
-        <meta name="twitter:image" content="https://alloynordic.se/__l5e/assets-v1/c789d5bd-667b-4ec0-92ce-5e113acd6ed2/og-image.jpg" />
+        <meta name="twitter:title" content="Alloy Nordic — AI-driven offertautomation. Global sourcing. Bättre affärer." />
+        <meta name="twitter:description" content="AI-driven offertautomation. Global sourcing. Bättre affärer. Alloy Nordic levererar industridetaljer från hela världen med kvalitetskontroll, logistik och skräddarsydd produktion enligt dina ritningar." />
+        <meta name="twitter:image" content="https://alloynordic.se/og-image.png" />
       </Helmet>
       <Navbar />
       <Hero />
